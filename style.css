@@ -1,0 +1,41 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: #13267f;
+    overflow: hidden;
+    text-align: center;
+}
+
+.navbar a {
+    display: inline-block;
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.navbar a:hover {
+    color: rgb(147, 154, 190);
+}
+
+.banner {
+    background-image: url('images/Babord.jpg');
+    background-size: cover;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner h1 {
+    color: white;
+}
+
+.text-section h2 {
+    color: #13267f;
+  }
+
