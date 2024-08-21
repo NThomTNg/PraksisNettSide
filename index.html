@@ -1,53 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-  <style>
-    .content {
-      padding: 100px;
-      display: flex;
-      flex-wrap: wrap;
-    }
-
-    .text-section {
-      flex: 1;
-      line-height: 190%;
-      min-width: 200px;
-      padding-right: 20px;
-      padding-left: 65px;
-    }
-
-    .image-section {
-      flex: 1;
-      min-width: 200px;
-    }
-
-    .image-section img {
-      max-width: 100%;
-      height: auto;
-    }
-  </style>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script></script>
     <title>Praksis Swipload</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="output.css" />
   </head>
-  <body>
-    <div class="banner">
-      <h1>Praksis Swipload 2024</h1>
-    </div>
-
-    <nav class="navbar">
-      <a href="index.html">Home</a>
-      <a href="praksis.html">Om oss</a>
-      <a href="about.html">Om Swipload</a>
-      <a href="https://www.swipload.com/">Swipload's nettside</a>
+  <body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="bg-blue-800 text-white py-4">
+      <div class="container mx-auto flex justify-between items-center">
+        <a href="index.html" class="text-xl font-semibold">Praksis Swipload</a>
+        <div class="space-x-6">
+          <a href="index.html" class="hover:text-gray-300">Hjem</a>
+          <a href="praksis.html" class="hover:text-gray-300">Om oss</a>
+          <a href="about.html" class="hover:text-gray-300">Om Swipload</a>
+          <a href="https://www.swipload.com/" class="hover:text-gray-300"
+            >Swipload's nettside</a
+          >
+        </div>
+      </div>
     </nav>
 
-    <div class="content">
-      <div class="text-section">
-        <h2>Prosjektbeskrivelse</h2>
-        <p>
+    <!-- Banner -->
+    <div
+      class="bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 text-white text-center py-20"
+    >
+      <h1 class="text-5xl font-bold">Praksis Swipload 2024</h1>
+    </div>
+
+    <!-- Content -->
+    <div class="container mx-auto flex flex-wrap py-10 px-4 md:px-0">
+      <!-- Text Section -->
+      <div class="w-full md:w-1/2 md:pr-10">
+        <h2 class="text-3xl font-semibold mb-4">Prosjektbeskrivelse</h2>
+        <p class="text-gray-700 leading-relaxed">
           Sammen med andre studenter fra UiA skal vi i løpet av semesteret delta
           i utviklingsprosessen av programvaren hos Swipload. Vi vil bli kjent
           med ulike verktøy de benytter, som Svelte, samt deres prosesser for å
@@ -55,9 +42,18 @@
           via deres programvare.
         </p>
       </div>
-      <div class="image-section">
-        <img src="images/fsd.JPG" alt="About Praksis Swipload" />
+      <!-- Image Section -->
+      <div class="w-full md:w-1/2 mt-6 md:mt-0">
+        <img
+          src="images/tangen-babord.jpg"
+          alt="About Praksis Swipload"
+          class="rounded-lg shadow-lg w-full h-auto object-cover"
+        />
       </div>
     </div>
   </body>
+  <footer class="bg-gray-100 text-black text-center p-4">
+    <!-- Footer content -->
+    <p>© 2024 Designed with Thomas, Tony, Nicoleta, and Ajdin </p>
+  </footer>
 </html>
