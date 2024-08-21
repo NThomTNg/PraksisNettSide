@@ -39,12 +39,6 @@ body {
   color: #13267f;
 }
 
-.carousel {
-  position: relative;
-  margin-top: 10px;
-  margin-bottom: 90px; 
-}
-
 .content {
   display: flex;
   flex-wrap: wrap;
