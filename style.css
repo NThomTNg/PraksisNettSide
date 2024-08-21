@@ -23,7 +23,7 @@ body {
 }
 
 .banner {
-  background-image: url('images/Babord.jpg');
+  background-image: url('images/tangen-babord.jpg');
   background-size: cover;
   height: 250px;
   display: flex;
