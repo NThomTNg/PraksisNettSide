@@ -5,6 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Team Cards Example</title>
     <link rel="stylesheet" href="output.css" />
+    <style>
+      /* Additional CSS for icon styling */
+      .social-icons {
+        display: flex;
+        gap: 10px; /* Adjust spacing between icons */
+      }
+      .social-icons img {
+        width: 30px;
+        height: 30px;
+        transition: transform 0.3s ease, filter 0.3s ease;
+      }
+      .social-icons img:hover {
+        transform: scale(1.1);
+        filter: brightness(0.8);
+      }
+    </style>
   </head>
   <body class="bg-gray-100">
     <!-- Navbar -->
@@ -15,9 +31,9 @@
           <a href="index.html" class="hover:text-gray-300">Hjem</a>
           <a href="praksis.html" class="hover:text-gray-300">Om oss</a>
           <a href="about.html" class="hover:text-gray-300">Om Swipload</a>
-          <a href="https://www.swipload.com/" class="hover:text-gray-300">
-            Swipload's nettside
-          </a>
+          <a href="https://www.swipload.com/" class="hover:text-gray-300"
+            >Swipload's nettside</a
+          >
         </div>
       </div>
     </nav>
@@ -43,6 +59,14 @@
           å jobbe innenfor en bedrift og hvordan man jobber med utvikling
           innenfor en profesjonell miljø.
         </p>
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/in/Thomas" target="_blank">
+            <img src="images/linkedin.png" alt="LinkedIn" />
+          </a>
+          <a href="https://github.com/Thomas" target="_blank">
+            <img src="images/github.png" alt="GitHub" />
+          </a>
+        </div>
       </div>
 
       <!-- Card 2: Tony Nguyen Le -->
@@ -67,10 +91,18 @@
           med Tony via nettsiden
           <a
             href="https://leworks.vercel.app/"
-            class="text-blue-500 hover:underline"
+            class="text-blue-500 hover:text-orange-500 hover:underline transition-all duration-300"
             >LeWorks</a
           >
         </p>
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/in/tonynl02" target="_blank">
+            <img src="images/linkedin.png" alt="LinkedIn" />
+          </a>
+          <a href="https://github.com/TonyLe02" target="_blank">
+            <img src="images/github.png" alt="GitHub" />
+          </a>
+        </div>
       </div>
 
       <!-- Card 3: Nicoleta -->
@@ -85,6 +117,14 @@
         <h3 class="text-xl font-semibold mb-4">Nicoleta</h3>
         <p class="text-gray-700 mb-4">Lorem Ipsum</p>
         <p class="text-gray-700 mb-4">Lorem Ipsum</p>
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/in/Nicoleta" target="_blank">
+            <img src="images/linkedin.png" alt="LinkedIn" />
+          </a>
+          <a href="https://github.com/Nicoleta" target="_blank">
+            <img src="images/github.png" alt="GitHub" />
+          </a>
+        </div>
       </div>
 
       <!-- Card 4: Ajdin -->
@@ -99,13 +139,21 @@
         <h3 class="text-xl font-semibold mb-4">Ajdin</h3>
         <p class="text-gray-700 mb-4">Lorem Ipsum</p>
         <p class="text-gray-700 mb-4">Lorem Ipsum</p>
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/in/Ajdin" target="_blank">
+            <img src="images/linkedin.png" alt="LinkedIn" />
+          </a>
+          <a href="https://github.com/Ajdin" target="_blank">
+            <img src="images/github.png" alt="GitHub" />
+          </a>
+        </div>
       </div>
     </div>
 
     <!-- Footer -->
     <footer class="bg-gray-100 text-black text-center p-4">
       <!-- Footer content -->
-      <p>© 2024 Designed with Thomas, Tony, Nicoleta, and Ajdin </p>
+      <p>© 2024 Designed with Thomas, Tony, Nicoleta, and Ajdin</p>
     </footer>
   </body>
 </html>
