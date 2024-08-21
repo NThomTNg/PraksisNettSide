@@ -3,144 +3,63 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script></script>
     <title>Praksis Swipload</title>
-    <link rel="stylesheet" href="style.css" />
-    <style>
-      .content {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        padding: 70px;
-      }
-
-      .text-section {
-        flex: 0 1 calc(50% - 20px);
-        line-height: 190%;
-        min-width: 300px;
-        max-width: 500px;
-      }
-
-      .carousel {
-        width: 100%;
-        max-width: 800px;
-        position: relative;
-        overflow: hidden;
-        margin: 0 auto;
-        margin-top: 10px;
-        margin-bottom: 90px;
-      }
-      .carousel-inner {
-        display: flex;
-        transition: transform 0.5s ease;
-      }
-      .carousel-item {
-        min-width: 100%;
-      }
-      .carousel-item img {
-        width: 100%;
-        height: auto;
-      }
-      .carousel-control {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background: rgba(0, 0, 0, 0.5);
-        color: white;
-        padding: 10px;
-        text-decoration: none;
-      }
-      .carousel-control.prev {
-        left: 10px;
-      }
-      .carousel-control.next {
-        right: 10px;
-      }
-    </style>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
   </head>
-  <body>
-    <div class="banner">
-      <h1>Praksis Swipload 2024</h1>
-    </div>
-
-    <nav class="navbar">
-      <a href="index.html">Home</a>
-      <a href="praksis.html">Om oss</a>
-      <a href="about.html">Om Swipload</a>
-      <a href="https://www.swipload.com/">Swipload's nettside</a>
+  <body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="bg-blue-800 text-white py-4">
+      <div class="container mx-auto flex justify-between items-center">
+        <a href="index.html" class="text-xl font-semibold">Praksis Swipload</a>
+        <div class="space-x-6">
+          <a href="index.html" class="hover:text-gray-300">Hjem</a>
+          <a href="praksis.html" class="hover:text-gray-300">Om oss</a>
+          <a href="about.html" class="hover:text-gray-300">Om Swipload</a>
+          <a href="https://www.swipload.com/" class="hover:text-gray-300">Swipload's nettside</a>
+        </div>
+      </div>
     </nav>
 
-    <div class="content">
+    <!-- Banner -->
+    <div class="bg-cover bg-center h-48 flex items-center justify-center" style="background-image: url('images/banner.jpg');">
+      <h1 class="text-4xl font-bold text-orange-400">Praksis Swipload 2024</h1>
+    </div>
+
+    <!-- Content Sections -->
+    <div class="container mx-auto py-8 space-y-8">
       <div class="text-section">
-        <h2>Om Swipload</h2>
-        <p>
-          Swipload er et oppstartsselskap som har som mål å digitalisere og
-          modernisere transportplanlegging gjennom administrasjonsprogramvare.
-          De ønsker å gjøre det så enkelt som mulig for selskaper å administrere
-          og håndtere transportordrer, samtidig som de får bedre oversikt over
-          logistikkprosessene sine.
+        <h2 class="text-2xl font-semibold mb-4">Om Swipload</h2>
+        <p class="text-gray-700">
+          Swipload er et oppstartsselskap som har som mål å digitalisere og modernisere transportplanlegging gjennom administrasjonsprogramvare. De ønsker å gjøre det så enkelt som mulig for selskaper å administrere og håndtere transportordrer, samtidig som de får bedre oversikt over logistikkprosessene sine.
         </p>
       </div>
       <div class="text-section">
-        <h2>Aktører</h2>
-        <p>
-          Gjennom årene har Swipload samarbeidet med flere ledende norske
-          investorer for å nå sine mål. De har et mangfold av partnere,
-          inkludert den Stavanger-baserte bedriften DSD, programvareselskapet
-          24SevenOffice, startup-inkubatoren The Factory, og flere andre.
+        <h2 class="text-2xl font-semibold mb-4">Aktører</h2>
+        <p class="text-gray-700">
+          Gjennom årene har Swipload samarbeidet med flere ledende norske investorer for å nå sine mål. De har et mangfold av partnere, inkludert den Stavanger-baserte bedriften DSD, programvareselskapet 24SevenOffice, startup-inkubatoren The Factory, og flere andre.
         </p>
       </div>
       <div class="text-section">
-        <h2>Kunder</h2>
-        <p>
-          For øyeblikket bruker flere velstående og store bedrifter Swiploads
-          produkter for å effektivisere sin transportlogistikk og
-          administrasjon. Flere av disse kundene har rapportert økt effektivitet
-          og er svært fornøyde med Swiploads programvare. Blant disse bedriftene
-          finner vi E.A. Smith, Optimera, Doka, og mange flere.
+        <h2 class="text-2xl font-semibold mb-4">Kunder</h2>
+        <p class="text-gray-700">
+          For øyeblikket bruker flere velstående og store bedrifter Swiploads produkter for å effektivisere sin transportlogistikk og administrasjon. Flere av disse kundene har rapportert økt effektivitet og er svært fornøyde med Swiploads programvare. Blant disse bedriftene finner vi E.A. Smith, Optimera, Doka, og mange flere.
         </p>
       </div>
     </div>
-    <div class="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item">
-          <img src="images/office-1.jpg" alt="Image 1" />
+
+    <!-- Image Section -->
+    <div class="container mx-auto py-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <img src="images/office-1.jpg" alt="Office Image 1" class="w-full h-auto object-cover rounded-lg shadow-md">
         </div>
-        <div class="carousel-item">
-          <img src="images/office-2.jpg" alt="Image 2" />
+        <div>
+          <img src="images/office-2.jpg" alt="Office Image 2" class="w-full h-auto object-cover rounded-lg shadow-md">
         </div>
       </div>
-      <a href="#" class="carousel-control prev">&#10094;</a>
-      <a href="#" class="carousel-control next">&#10095;</a>
     </div>
-    <script>
-      let currentSlide = 0;
-      const slides = document.querySelectorAll(".carousel-item");
-      const prevBtn = document.querySelector(".carousel-control.prev");
-      const nextBtn = document.querySelector(".carousel-control.next");
-
-      function moveSlide(n) {
-        currentSlide += n;
-        if (currentSlide >= slides.length) {
-          currentSlide = 0;
-        }
-        if (currentSlide < 0) {
-          currentSlide = slides.length - 1;
-        }
-        document.querySelector(
-          ".carousel-inner"
-        ).style.transform = `translateX(-${currentSlide * 100}%)`;
-      }
-
-      prevBtn.addEventListener("click", (event) => {
-        event.preventDefault();
-        moveSlide(-1);
-      });
-
-      nextBtn.addEventListener("click", (event) => {
-        event.preventDefault();
-        moveSlide(1);
-      });
-    </script>
   </body>
 </html>
