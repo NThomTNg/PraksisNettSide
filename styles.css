@@ -1,3 +1,65 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.navbar {
+	background-color: rgb(30 64 175);
+	overflow: hidden;
+}
+
+.navbar a {
+	float: right;
+	display: block;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 20px;
+	color: #f5e8c7;
+}
+.navbar a:hover {
+	color: white;
+}
+
+.navbar a.active {
+	background-color: burlywood;
+	color: white;
+}
+
+.navbar .icon {
+	display: none;
+}
+
+#praksisProsjekt {
+	float: left;
+	font-weight: bold;
+}
+
+@media screen and (max-width: 800px) {
+	.navbar a:not(:first-child) {
+		display: none;
+	}
+	.navbar a.icon {
+		float: right;
+		display: block;
+	}
+}
+
+@media screen and (max-width: 800px) {
+	.navbar.responsive {
+		position: relative;
+	}
+	.navbar.responsive a.icon {
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+	.navbar.responsive a {
+		float: none;
+		display: block;
+		text-align: left;
+	}
+	.navbar.responsive #praksisProsjekt {
+		float: none;
+		text-align: left;
+	}
+}

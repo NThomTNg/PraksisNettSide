@@ -5,6 +5,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Team Cards</title>
 		<link rel="stylesheet" href="output.css" />
+		<link rel="stylesheet" href="styles.css" />
+
 		<style>
 			/* Additional CSS for icon styling */
 			.social-icons {
@@ -24,20 +26,42 @@
 			}
 		</style>
 	</head>
-	<body class="bg-gray-100">
-		<!-- Navbar -->
-		<nav class="bg-blue-800 text-white py-4">
-			<div class="container mx-auto flex justify-between items-center">
-				<a href="index.html" class="text-xl font-semibold">Praksisprosjekt 2024</a>
-				<div class="space-x-6">
-					<a href="index.html" class="hover:text-gray-300">Hjem</a>
-					<a href="praksis.html" class="hover:text-gray-300">Om oss</a>
-					<a href="about.html" class="hover:text-gray-300">Om Swipload</a>
-					<a href="https://www.swipload.com/" class="hover:text-gray-300">Swipload's nettside</a>
-				</div>
-			</div>
-		</nav>
+	<script>
+		function toggleMenu() {
+			var x = document.getElementById('navbar');
+			if (x.className === 'navbar') {
+				x.className += ' responsive';
 
+				// Reorder elements
+				var links = Array.from(x.getElementsByTagName('a'));
+				var icon = links.pop();
+				links.sort((a, b) => {
+					var order = [
+						'#praksisProsjekt',
+						'index.html',
+						'praksis.html',
+						'about.html',
+						'https://www.swipload.com/'
+					];
+					return order.indexOf(a.getAttribute('href')) - order.indexOf(b.getAttribute('href'));
+				});
+				links.push(icon);
+				links.forEach((link) => x.appendChild(link));
+			} else {
+				x.className = 'navbar';
+			}
+		}
+	</script>
+	<!-- Navbar -->
+	<nav class="navbar" id="navbar">
+		<a href="index.html" id="praksisProsjekt">Praksisprosjekt 2024</a>
+		<a href="praksis.html">Om oss</a>
+		<a href="about.html">Om Swipload</a>
+		<a href="https://www.swipload.com/">Swipload's nettside</a>
+		<a href="index.html">Hjem</a>
+		<a href="javascript:void(0)" class="icon" onclick="toggleMenu()">&#9776;</a>
+	</nav>
+	<body class="bg-gray-100">
 		<!-- Team Cards -->
 		<div class="container mx-auto mt-4">
 			<h2 class="text-3xl font-semibold text-center mb-0">Om oss</h2>
