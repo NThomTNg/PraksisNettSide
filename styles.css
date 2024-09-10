@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .navbar {
-	background-color: rgb(30 64 175);
+	background-color: rgb(255, 255, 255);
 	overflow: hidden;
 }
 
@@ -14,10 +14,10 @@
 	padding: 14px 16px;
 	text-decoration: none;
 	font-size: 20px;
-	color: #f5e8c7;
+	color: #12267f;
 }
 .navbar a:hover {
-	color: white;
+	color: rgb(184, 184, 184);
 }
 
 .navbar a.active {
@@ -33,6 +33,23 @@
 	float: left;
 	font-weight: bold;
 }
+
+article {
+	background-color: #fff;
+	padding: 1.5rem;
+	border-radius: 0.5rem;
+	box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+	margin-bottom: 1.5rem;
+  }
+  
+  article h2 {
+	margin-bottom: 0.5rem;
+  }
+  
+  article p {
+	margin-bottom: 1rem;
+  }
+  
 
 @media screen and (max-width: 800px) {
 	.navbar a:not(:first-child) {

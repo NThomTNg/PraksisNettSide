@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Status oppdateringer</title>
+    <link rel="icon" type="image/icon" href="../images/swiplogo.png" />
+    <link rel="stylesheet" href="../output.css" />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <script>
+    function toggleMenu() {
+      var x = document.getElementById("navbar");
+      if (x.className === "navbar") {
+        x.className += " responsive";
+
+        // Reorder elements
+        var links = Array.from(x.getElementsByTagName("a"));
+        var icon = links.pop();
+        links.sort((a, b) => {
+          var order = [
+            "#praksisProsjekt",
+            "index.html",
+            "praksis.html",
+            "about.html",
+            "https://www.swipload.com/",
+          ];
+          return (
+            order.indexOf(a.getAttribute("href")) -
+            order.indexOf(b.getAttribute("href"))
+          );
+        });
+        links.push(icon);
+        links.forEach((link) => x.appendChild(link));
+      } else {
+        x.className = "navbar";
+      }
+    }
+  </script>
+  <!-- Navbar -->
+  <nav class="navbar shadow-md" id="navbar">
+    <a href="../index.html" id="praksisProsjekt">Praksisprosjekt 2024</a>
+    <a href="https://www.swipload.com/">Swipload's nettside</a>
+    <a href="../pages/status.html">Status</a>
+    <a href="../pages/oss.html">Om oss</a>
+    <a href="../pages/swipload.html">Om Swipload</a>
+    <a href="../index.html">Hjem</a>
+    <img
+      src="../images/swiplogo.png"
+      alt="Logo"
+      style="height: 50px; vertical-align: middle"
+    />
+    <a href="javascript:void(0)" class="icon" onclick="toggleMenu()">&#9776;</a>
+  </nav>
+  <body class="bg-gray-100">
+    <main class="container mx-auto p-4">
+      <h1 class="text-3xl font-bold py-10 text-blue-800">Status Rapport</h1>
+      <article class="bg-white p-6 rounded-lg shadow-md mb-4">
+        <h2 class="text-2xl font-semibold mb-2 text-blue-800">
+          Status Rapport 1
+        </h2>
+        <p class="text-gray-700 mb-4">Posted on September 10, 2024</p>
+        <img src="../images/examplepic.png" alt="statusPic1" />
+        <p class="text-black text-center py-10">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+          scelerisque leo nec magna fermentum, a cursus nulla facilisis.
+          Curabitur nec nunc nec nunc ultricies ultricies. Nullam scelerisque
+          leo nec magna fermentum, a cursus nulla facilisis. Curabitur nec
+        </p>
+      </article>
+    </main>
+  </body>
+  <footer class="bg-gray-100 text-black text-center py-10">
+    <!-- Footer content -->
+    <p>© 2024 Designed by Thomas, Tony, Nicoleta, and Ajdin</p>
+  </footer>
+</html>
