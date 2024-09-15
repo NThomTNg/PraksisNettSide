@@ -1,8 +1,6 @@
 /*
 ! tailwindcss v3.4.10 | MIT License | https://tailwindcss.com
-*/
-
-/*
+*//*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
 2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
 */
@@ -10,6 +8,7 @@
 *,
 ::before,
 ::after {
+
 	box-sizing: border-box;
 	/* 1 */
 	border-width: 0;
@@ -18,6 +17,7 @@
 	/* 2 */
 	border-color: #e5e7eb;
 	/* 2 */
+
 }
 
 ::before,
@@ -37,6 +37,7 @@
 
 html,
 :host {
+
 	line-height: 1.5;
 	/* 1 */
 	-webkit-text-size-adjust: 100%;
@@ -55,6 +56,7 @@ html,
 	/* 6 */
 	-webkit-tap-highlight-color: transparent;
 	/* 7 */
+
 }
 
 /*
@@ -63,10 +65,12 @@ html,
 */
 
 body {
+
 	margin: 0;
 	/* 1 */
 	line-height: inherit;
 	/* 2 */
+
 }
 
 /*
@@ -76,12 +80,14 @@ body {
 */
 
 hr {
+
 	height: 0;
 	/* 1 */
 	color: inherit;
 	/* 2 */
 	border-top-width: 1px;
 	/* 3 */
+
 }
 
 /*
@@ -136,6 +142,7 @@ code,
 kbd,
 samp,
 pre {
+
 	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
 		'Courier New', monospace;
 	/* 1 */
@@ -145,6 +152,7 @@ pre {
 	/* 3 */
 	font-size: 1em;
 	/* 4 */
+
 }
 
 /*
@@ -182,12 +190,14 @@ sup {
 */
 
 table {
+
 	text-indent: 0;
 	/* 1 */
 	border-color: inherit;
 	/* 2 */
 	border-collapse: collapse;
 	/* 3 */
+
 }
 
 /*
@@ -201,6 +211,7 @@ input,
 optgroup,
 select,
 textarea {
+
 	font-family: inherit;
 	/* 1 */
 	font-feature-settings: inherit;
@@ -221,6 +232,7 @@ textarea {
 	/* 2 */
 	padding: 0;
 	/* 3 */
+
 }
 
 /*
@@ -241,12 +253,14 @@ button,
 input:where([type='button']),
 input:where([type='reset']),
 input:where([type='submit']) {
+
 	-webkit-appearance: button;
 	/* 1 */
 	background-color: transparent;
 	/* 2 */
 	background-image: none;
 	/* 2 */
+
 }
 
 /*
@@ -288,10 +302,12 @@ Correct the cursor style of increment and decrement buttons in Safari.
 */
 
 [type='search'] {
+
 	-webkit-appearance: textfield;
 	/* 1 */
 	outline-offset: -2px;
 	/* 2 */
+
 }
 
 /*
@@ -308,10 +324,12 @@ Remove the inner padding in Chrome and Safari on macOS.
 */
 
 ::-webkit-file-upload-button {
+
 	-webkit-appearance: button;
 	/* 1 */
 	font: inherit;
 	/* 2 */
+
 }
 
 /*
@@ -362,7 +380,6 @@ menu {
 /*
 Reset default styling for dialogs.
 */
-
 dialog {
 	padding: 0;
 }
@@ -380,20 +397,24 @@ textarea {
 2. Set the default placeholder color to the user's configured gray 400 color.
 */
 
+
 input::-moz-placeholder,
 textarea::-moz-placeholder {
 	opacity: 1;
 	/* 1 */
 	color: #9ca3af;
 	/* 2 */
+
 }
 
 input::placeholder,
 textarea::placeholder {
+
 	opacity: 1;
 	/* 1 */
 	color: #9ca3af;
 	/* 2 */
+
 }
 
 /*
@@ -408,7 +429,6 @@ button,
 /*
 Make sure disabled buttons don't get the pointer cursor.
 */
-
 :disabled {
 	cursor: default;
 }
@@ -427,10 +447,12 @@ audio,
 iframe,
 embed,
 object {
+
 	display: block;
 	/* 1 */
 	vertical-align: middle;
 	/* 2 */
+
 }
 
 /*
@@ -444,7 +466,6 @@ video {
 }
 
 /* Make elements with the HTML hidden attribute stay hidden by default */
-
 [hidden] {
 	display: none;
 }
@@ -558,95 +579,105 @@ video {
 	--tw-contain-paint:  ;
 	--tw-contain-style:  ;
 }
-
 .container {
 	width: 100%;
 }
-
 @media (min-width: 640px) {
+
 	.container {
 		max-width: 640px;
 	}
-}
 
+}
 @media (min-width: 768px) {
+
 	.container {
 		max-width: 768px;
 	}
-}
 
+}
 @media (min-width: 1024px) {
+
 	.container {
 		max-width: 1024px;
 	}
-}
 
+}
 @media (min-width: 1280px) {
+
 	.container {
 		max-width: 1280px;
 	}
-}
 
+}
 @media (min-width: 1536px) {
+
 	.container {
 		max-width: 1536px;
 	}
-}
 
+}
+.m-4 {
+  margin: 1rem;
+}
 .mx-auto {
 	margin-left: auto;
 	margin-right: auto;
 }
 
+
 .mb-0 {
 	margin-bottom: 0px;
-}
 
+}
 .mb-4 {
 	margin-bottom: 1rem;
 }
-
 .mt-4 {
 	margin-top: 1rem;
 }
-
 .mt-6 {
 	margin-top: 1.5rem;
 }
-
+.mt-10 {
+  margin-top: 2.5rem;
+}
+.mt-8 {
+  margin-top: 2rem;
+}
+.mb-8 {
+  margin-bottom: 2rem;
+}
 .flex {
 	display: flex;
 }
-
 .grid {
 	display: grid;
 }
-
 .h-32 {
 	height: 8rem;
 }
-
 .h-auto {
 	height: auto;
 }
 
+
 .w-1\/2 {
 	width: 50%;
-}
 
+}
 .w-32 {
 	width: 8rem;
 }
-
 .w-full {
 	width: 100%;
 }
-
 .transform {
 	transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate))
 		skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
 		scaleY(var(--tw-scale-y));
 }
+
 
 .list-inside {
 	list-style-position: inside;
@@ -656,145 +687,152 @@ video {
 	list-style-type: disc;
 }
 
+
 .grid-cols-1 {
 	grid-template-columns: repeat(1, minmax(0, 1fr));
 }
-
 .flex-col {
 	flex-direction: column;
 }
-
 .flex-wrap {
 	flex-wrap: wrap;
 }
-
 .items-center {
 	align-items: center;
 }
-
 .gap-4 {
 	gap: 1rem;
 }
-
 .gap-6 {
 	gap: 1.5rem;
 }
-
 .rounded-2xl {
 	border-radius: 1rem;
 }
-
 .rounded-full {
 	border-radius: 9999px;
 }
-
 .rounded-lg {
 	border-radius: 0.5rem;
 }
-
 .rounded-md {
 	border-radius: 0.375rem;
 }
-
 .bg-gray-100 {
 	--tw-bg-opacity: 1;
 	background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
-
 .bg-white {
 	--tw-bg-opacity: 1;
 	background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
-
 .object-cover {
 	-o-object-fit: cover;
 	object-fit: cover;
 }
-
 .p-4 {
 	padding: 1rem;
 }
-
 .p-6 {
 	padding: 1.5rem;
 }
-
+.p-20 {
+  padding: 5rem;
+}
 .px-4 {
 	padding-left: 1rem;
 	padding-right: 1rem;
 }
-
 .py-10 {
 	padding-top: 2.5rem;
 	padding-bottom: 2.5rem;
 }
-
 .py-20 {
 	padding-top: 5rem;
 	padding-bottom: 5rem;
 }
-
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+.py-5 {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.pt-4 {
+  padding-top: 1rem;
+}
+.pt-8 {
+  padding-top: 2rem;
+}
 .text-center {
 	text-align: center;
 }
-
 .text-2xl {
 	font-size: 1.5rem;
 	line-height: 2rem;
 }
-
 .text-3xl {
 	font-size: 1.875rem;
 	line-height: 2.25rem;
 }
-
 .text-5xl {
 	font-size: 3rem;
 	line-height: 1;
 }
-
 .text-xl {
 	font-size: 1.25rem;
 	line-height: 1.75rem;
 }
-
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
 .font-bold {
 	font-weight: 700;
 }
-
 .font-semibold {
 	font-weight: 600;
 }
-
 .leading-relaxed {
 	line-height: 1.625;
 }
-
 .text-\[\#132780\] {
 	--tw-text-opacity: 1;
 	color: rgb(19 39 128 / var(--tw-text-opacity));
 }
-
 .text-black {
 	--tw-text-opacity: 1;
 	color: rgb(0 0 0 / var(--tw-text-opacity));
 }
-
 .text-blue-500 {
 	--tw-text-opacity: 1;
 	color: rgb(59 130 246 / var(--tw-text-opacity));
 }
+
 
 .text-blue-800 {
 	--tw-text-opacity: 1;
 	color: rgb(30 64 175 / var(--tw-text-opacity));
 }
 
+
 .text-gray-700 {
 	--tw-text-opacity: 1;
 	color: rgb(55 65 81 / var(--tw-text-opacity));
 }
-
 .shadow-lg {
 	--tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 	--tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color),
@@ -802,14 +840,12 @@ video {
 	box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
 		var(--tw-shadow);
 }
-
 .shadow-md {
 	--tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 	--tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
 	box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
 		var(--tw-shadow);
 }
-
 .ring {
 	--tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width)
 		var(--tw-ring-offset-color);
@@ -817,12 +853,10 @@ video {
 		var(--tw-ring-color);
 	box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 }
-
 .filter {
 	filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale)
 		var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
-
 .transition {
 	transition-property:
 		color,
@@ -854,19 +888,18 @@ video {
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 	transition-duration: 150ms;
 }
-
 .transition-all {
 	transition-property: all;
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 	transition-duration: 150ms;
 }
-
 .duration-300 {
 	transition-duration: 300ms;
 }
 
 .navbar {
 	background-color: rgb(255, 255, 255);
+
 }
 .image {
 	width: 50px;
@@ -895,6 +928,7 @@ video {
 
 .navbar a:hover {
 	color: rgb(184, 184, 184);
+
 }
 
 article {
@@ -903,6 +937,7 @@ article {
 	border-radius: 0.5rem;
 	box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 	margin-bottom: 1.5rem;
+
 }
 
 article h2 {
@@ -914,6 +949,7 @@ article p {
 }
 .hideOnMobile {
 	float: right;
+
 }
 #praksisProsjekt {
 	float: left;
@@ -991,17 +1027,21 @@ article p {
 }
 
 @media (min-width: 768px) {
+
 	.md\:mt-0 {
 		margin-top: 0px;
 	}
+
 
 	.md\:w-1\/2 {
 		width: 50%;
 	}
 
+
 	.md\:grid-cols-2 {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
+
 
 	.md\:px-0 {
 		padding-left: 0px;
@@ -1018,3 +1058,4 @@ article p {
 		grid-template-columns: repeat(4, minmax(0, 1fr));
 	}
 } */
+

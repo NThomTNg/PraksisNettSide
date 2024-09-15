@@ -5,11 +5,7 @@ module.exports = {
     "./pages/*.html", // Include other directories as needed
   ],
   theme: {
-    extend: {
-      fontFamily: {
-        roboto: ["Roboto", "sans-serif"],
-      },
-    },
+    extend: {},
   },
   plugins: [],
 };
