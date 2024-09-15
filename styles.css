@@ -7,31 +7,8 @@
 	overflow: hidden;
 }
 
-.navbar a {
-	float: right;
-	display: block;
-	text-align: center;
-	padding: 14px 16px;
-	text-decoration: none;
-	font-size: 20px;
-	color: #12267f;
-}
 .navbar a:hover {
 	color: rgb(184, 184, 184);
-}
-
-.navbar a.active {
-	background-color: burlywood;
-	color: white;
-}
-
-.navbar .icon {
-	display: none;
-}
-
-#praksisProsjekt {
-	float: left;
-	font-weight: bold;
 }
 
 article {
@@ -40,18 +17,17 @@ article {
 	border-radius: 0.5rem;
 	box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 	margin-bottom: 1.5rem;
-  }
-  
-  article h2 {
-	margin-bottom: 0.5rem;
-  }
-  
-  article p {
-	margin-bottom: 1rem;
-  }
-  
+}
 
-@media screen and (max-width: 800px) {
+article h2 {
+	margin-bottom: 0.5rem;
+}
+
+article p {
+	margin-bottom: 1rem;
+}
+
+/* @media screen and (max-width: 800px) {
 	.navbar a:not(:first-child) {
 		display: none;
 	}
@@ -79,4 +55,4 @@ article {
 		float: none;
 		text-align: left;
 	}
-}
+} */
