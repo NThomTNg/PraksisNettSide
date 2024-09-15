@@ -215,40 +215,46 @@
         "theme-toggle-light-icon"
       );
 
-      // Change the icons inside the button based on previous settings
+      // Function to update icons based on the current theme
+      function updateIcons() {
+        if (document.documentElement.classList.contains("dark")) {
+          themeToggleDarkIcon.classList.add("hidden");
+          themeToggleLightIcon.classList.remove("hidden");
+        } else {
+          themeToggleDarkIcon.classList.remove("hidden");
+          themeToggleLightIcon.classList.add("hidden");
+        }
+      }
+
+      // Initial check for theme preference
       if (
         localStorage.getItem("color-theme") === "dark" ||
         (!("color-theme" in localStorage) &&
           window.matchMedia("(prefers-color-scheme: dark)").matches)
       ) {
-        themeToggleLightIcon.classList.remove("hidden");
+        document.documentElement.classList.add("dark");
       } else {
-        themeToggleDarkIcon.classList.remove("hidden");
+        document.documentElement.classList.remove("dark");
       }
+
+      // Update icons based on the initial theme
+      updateIcons();
 
       var themeToggleBtn = document.getElementById("theme-toggle");
 
       themeToggleBtn.addEventListener("click", function () {
-        themeToggleDarkIcon.classList.toggle("hidden");
-        themeToggleLightIcon.classList.toggle("hidden");
+        // Toggle the dark class on the html element
+        document.documentElement.classList.toggle("dark");
 
-        if (localStorage.getItem("color-theme")) {
-          if (localStorage.getItem("color-theme") === "light") {
-            document.documentElement.classList.add("dark");
-            localStorage.setItem("color-theme", "dark");
-          } else {
-            document.documentElement.classList.remove("dark");
-            localStorage.setItem("color-theme", "light");
-          }
+        // Update the localStorage value
+        if (document.documentElement.classList.contains("dark")) {
+          localStorage.setItem("color-theme", "dark");
         } else {
-          if (document.documentElement.classList.contains("dark")) {
-            document.documentElement.classList.remove("dark");
-            localStorage.setItem("color-theme", "light");
-          } else {
-            document.documentElement.classList.add("dark");
-            localStorage.setItem("color-theme", "dark");
-          }
+          localStorage.setItem("color-theme", "light");
         }
+
+        // Update icons based on the new theme
+        updateIcons();
       });
     </script>
 
