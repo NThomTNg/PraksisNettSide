@@ -1,142 +1,262 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/icon" href="../images/swiplogo.png" />
+    <title>Praksis Swipload</title>
+    <link rel="stylesheet" href="../output.css" />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body class="bg-gray-100 dark:bg-gray-900">
+    <script>
+      if (
+        localStorage.getItem("color-theme") === "dark" ||
+        (!("color-theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
 
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/icon" href="../images/swiplogo.png" />
-		<title>Praksis Swipload</title>
-		<link rel="stylesheet" href="../output.css" />
-		<link rel="stylesheet" href="../styles.css" />
-	</head>
-	<body class="bg-gray-100">
-		<!-- Navbar -->
-		<script>
-			function toggleMenu() {
-				const dropdown = document.getElementById('dropdown');
-				dropdown.style.display = dropdown.style.display === 'none' ? 'flex' : 'none';
-			}
-			window.addEventListener('resize', function () {
-				if (window.innerWidth > 800) {
-					document.getElementById('dropdown').style.display = 'none';
-				}
-			});
-		</script>
-		<!-- Navbar -->
-		<nav class="navbar shadow-md">
-			<ul>
-				<li>
-					<a style="padding-left: 0px" href="./../index.html" id="praksisProsjekt">
-						<img src="./../images/swiplogo.png" alt="Logo" class="image" />Praksisprosjekt 2024</a
-					>
-				</li>
-				<li class="hideOnMobile"><a href="./status.html">Status</a></li>
-				<li class="hideOnMobile"><a href="./oss.html">Om oss</a></li>
-				<li class="hideOnMobile"><a href="./swipload.html">Om Swipload</a></li>
-				<li class="hideOnMobile"><a href="./../index.html">Hjem</a></li>
+    <!-- Flowbite Navbar -->
+    <nav class="bg-white shadow border-gray-200 dark:bg-gray-900">
+      <div
+        class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
+      >
+        <a href="/index.html" class="flex items-center">
+          <img
+            src="/images/swiplogo.png"
+            class="h-8 mr-3"
+            alt="Swipload Logo"
+          />
+          <span
+            class="self-center text-2xl text-gray-800 font-semibold whitespace-nowrap dark:text-white"
+            >Praksisprosjekt 2024</span
+          >
+        </a>
+        <div class="flex md:order-2">
+          <button
+            id="theme-toggle"
+            type="button"
+            class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5"
+          >
+            <svg
+              id="theme-toggle-dark-icon"
+              class="hidden w-5 h-5"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
+              ></path>
+            </svg>
+            <svg
+              id="theme-toggle-light-icon"
+              class="hidden w-5 h-5"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </button>
+          <button
+            data-collapse-toggle="navbar-default"
+            type="button"
+            class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            aria-controls="navbar-default"
+            aria-expanded="false"
+          >
+            <span class="sr-only">Open main menu</span>
+            <svg
+              class="w-5 h-5"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 17 14"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M1 1h15M1 7h15M1 13h15"
+              />
+            </svg>
+          </button>
+        </div>
+        <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+          <ul
+            class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+          >
+            <li>
+              <a
+                href="/index.html"
+                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                aria-current="page"
+                >Hjem</a
+              >
+            </li>
+            <li>
+              <a
+                href="/pages/swipload.html"
+                class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
+                >Om Swipload</a
+              >
+            </li>
+            <li>
+              <a
+                href="/pages/oss.html"
+                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                >Om oss</a
+              >
+            </li>
+            <li>
+              <a
+                href="/pages/status.html"
+                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                >Status</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.swipload.com"
+                target="_blank"
+                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                >Besøk Swipload</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-				<li class="menu-button" style="float: right">
-					<a onclick="toggleMenu()"
-						><svg
-							xmlns="http://www.w3.org/2000/svg"
-							height="24px"
-							viewBox="0 -960 960 960"
-							width="24px"
-							fill="#12267f"
-						>
-							<path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" /></svg
-					></a>
-				</li>
-			</ul>
+    <!-- Banner -->
+    <div
+      class="text-[#132780] dark:text-white container mx-auto text-center py-20"
+    >
+      <h1 class="text-5xl font-bold">Hvem er Swipload?</h1>
+    </div>
 
-			<ul id="dropdown">
-				<div style="width: 100%; height: 50px">
-					<li>
-						<a style="padding-left: 0px" href="./../index.html" id="praksisProsjekt">
-							<img src="./../images/swiplogo.png" alt="Logo" class="image" />Praksisprosjekt 2024</a
-						>
-					</li>
+    <body class="bg-gray-100 dark:bg-gray-900">
+      <div class="container mx-auto flex flex-wrap py-10 px-4 md:px-0">
+        <article class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-4">
+        <div class="text-section">
+          <h2 class="text-2xl dark:text-white font-semibold mb-4">Swipload</h2>
+          <p class="text-black dark:text-white">
+            Swipload er et oppstartsselskap som har som mål å digitalisere og
+            modernisere transportplanlegging gjennom administrasjonsprogramvare.
+            <br />
+            De ønsker å gjøre det så enkelt som mulig for selskaper å
+            administrere og håndtere transportordrer, samtidig som de får bedre
+            oversikt over logistikkprosessene sine.
+          </p>
+        </div>
+        <div class="text-section py-10">
+          <h2 class="text-2xl dark:text-white font-semibold mb-4">Aktører</h2>
+          <p class="text-black dark:text-white">
+            Gjennom årene har Swipload samarbeidet med flere ledende norske
+            investorer for å nå sine mål. De har et mangfold av partnere,
+            inkludert den
+            <br />
+            Stavanger-baserte bedriften DSD, programvareselskapet 24SevenOffice,
+            startup-inkubatoren The Factory, og flere andre.
+          </p>
+        </div>
+        <div class="text-section">
+          <h2 class="text-2xl dark:text-white font-semibold mb-4">Kunder</h2>
+          <p class="text-black dark:text-white">
+            For øyeblikket bruker flere velstående og store bedrifter Swiploads
+            produkter for å effektivisere sin transportlogistikk og
+            administrasjon.
+            <br />
+            Flere av disse kundene har rapportert økt effektivitet og er svært
+            fornøyde med Swiploads programvare. Blant disse bedriftene finner vi
+            E.A. Smith, Optimera, Doka, og mange flere.
+          </p>
+        </article>
+        </div>
+      </div>
 
-					<li>
-						<a style="float: right" onclick="toggleMenu()"
-							><svg
-								xmlns="http://www.w3.org/2000/svg"
-								height="24px"
-								viewBox="0 -960 960 960"
-								width="24px"
-								fill="#12267f"
-							>
-								<path
-									d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"
-								/></svg
-						></a>
-					</li>
-				</div>
-				<li style="padding-left: 5px"><a href="./../index.html">Hjem</a></li>
-				<li style="padding-left: 5px"><a href="./swipload.html">Om Swipload</a></li>
-				<li style="padding-left: 5px"><a href="./status.html">Status</a></li>
-				<li style="padding-left: 5px"><a href="./oss.html">Om oss</a></li>
-			</ul>
-		</nav>
-		<body>
-			<div class="container mx-auto flex flex-wrap py-10 px-4 md:px-0">
-				<div class="text-section">
-					<h2 class="text-2xl font-semibold mb-4">Swipload</h2>
-					<p class="text-black">
-						Swipload er et oppstartsselskap som har som mål å digitalisere og modernisere
-						transportplanlegging gjennom administrasjonsprogramvare.
-						<br />
-						De ønsker å gjøre det så enkelt som mulig for selskaper å administrere og håndtere
-						transportordrer, samtidig som de får bedre oversikt over logistikkprosessene sine.
-					</p>
-				</div>
-				<div class="text-section py-10">
-					<h2 class="text-2xl font-semibold mb-4">Aktører</h2>
-					<p class="text-black">
-						Gjennom årene har Swipload samarbeidet med flere ledende norske investorer for å nå sine
-						mål. De har et mangfold av partnere, inkludert den
-						<br />
-						Stavanger-baserte bedriften DSD, programvareselskapet 24SevenOffice, startup-inkubatoren
-						The Factory, og flere andre.
-					</p>
-				</div>
-				<div class="text-section">
-					<h2 class="text-2xl font-semibold mb-4">Kunder</h2>
-					<p class="text-black">
-						For øyeblikket bruker flere velstående og store bedrifter Swiploads produkter for å
-						effektivisere sin transportlogistikk og administrasjon.
-						<br />
-						Flere av disse kundene har rapportert økt effektivitet og er svært fornøyde med
-						Swiploads programvare. Blant disse bedriftene finner vi E.A. Smith, Optimera, Doka, og
-						mange flere.
-					</p>
-				</div>
-			</div>
+      <!-- Image Section -->
+      <div class="container mx-auto flex flex-wrap py-10 px-4 md:px-0">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <img
+              src="../images/office-1.jpg"
+              alt="Office Image 1"
+              class="w-full h-auto object-cover rounded-lg shadow-md"
+            />
+          </div>
+          <div>
+            <img
+              src="../images/office-2.jpg"
+              alt="Office Image 2"
+              class="w-full h-auto object-cover rounded-lg shadow-md"
+            />
+          </div>
+        </div>
+      </div>
+    </body>
 
-			<!-- Image Section -->
-			<div class="container mx-auto flex flex-wrap py-10 px-4 md:px-0">
-				<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-					<div>
-						<img
-							src="../images/office-1.jpg"
-							alt="Office Image 1"
-							class="w-full h-auto object-cover rounded-lg shadow-md"
-						/>
-					</div>
-					<div>
-						<img
-							src="../images/office-2.jpg"
-							alt="Office Image 2"
-							class="w-full h-auto object-cover rounded-lg shadow-md"
-						/>
-					</div>
-				</div>
-			</div>
-		</body>
-		<footer class="bg-gray-100 text-black text-center py-10">
-			<!-- Footer content -->
-			<p>© 2024 Designed by Thomas, Tony, Nicoleta, and Ajdin</p>
-		</footer>
-	</body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+    <script>
+      // Dark mode toggle script
+      var themeToggleDarkIcon = document.getElementById(
+        "theme-toggle-dark-icon"
+      );
+      var themeToggleLightIcon = document.getElementById(
+        "theme-toggle-light-icon"
+      );
 
+      // Change the icons inside the button based on previous settings
+      if (
+        localStorage.getItem("color-theme") === "dark" ||
+        (!("color-theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        themeToggleLightIcon.classList.remove("hidden");
+      } else {
+        themeToggleDarkIcon.classList.remove("hidden");
+      }
+
+      var themeToggleBtn = document.getElementById("theme-toggle");
+
+      themeToggleBtn.addEventListener("click", function () {
+        themeToggleDarkIcon.classList.toggle("hidden");
+        themeToggleLightIcon.classList.toggle("hidden");
+
+        if (localStorage.getItem("color-theme")) {
+          if (localStorage.getItem("color-theme") === "light") {
+            document.documentElement.classList.add("dark");
+            localStorage.setItem("color-theme", "dark");
+          } else {
+            document.documentElement.classList.remove("dark");
+            localStorage.setItem("color-theme", "light");
+          }
+        } else {
+          if (document.documentElement.classList.contains("dark")) {
+            document.documentElement.classList.remove("dark");
+            localStorage.setItem("color-theme", "light");
+          } else {
+            document.documentElement.classList.add("dark");
+            localStorage.setItem("color-theme", "dark");
+          }
+        }
+      });
+    </script>
+
+    <footer class="text-black dark:text-white text-center py-10">
+      <!-- Footer content -->
+      <p>© 2024 Designed by Thomas, Tony, Nicoleta, and Ajdin</p>
+    </footer>
+  </body>
 </html>
