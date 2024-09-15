@@ -1,191 +1,139 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/icon" href="../images/swiplogo.png" />
-    <title>Team Cards</title>
-    <link rel="stylesheet" href="../output.css" />
-    <link rel="stylesheet" href="../styles.css" />
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/icon" href="../images/swiplogo.png" />
+		<title>Team Cards</title>
+		<link rel="stylesheet" href="../output.css" />
+		<link rel="stylesheet" href="../styles.css" />
 
-    <style>
-      /* Additional CSS for icon styling */
-      .social-icons {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        padding-top: 10px;
-        border-top: 2px solid rgb(217, 217, 217);
-        display: flex;
-        gap: 10px; /* Adjust spacing between icons */
-        margin-top: auto; /* Align icons to the bottom */
-      }
-      .social-icons img {
-        width: 30px;
-        height: 30px;
-        transition: transform 0.3s ease, filter 0.3s ease;
-      }
-      .social-icons img:hover {
-        transform: scale(1.1);
-        filter: brightness(0.8);
-      }
-    </style>
-  </head>
-  <script>
-    function toggleMenu() {
-      var x = document.getElementById("navbar");
-      if (x.className === "navbar") {
-        x.className += " responsive";
+		<style>
+			/* Additional CSS for icon styling */
+			.social-icons {
+				display: flex;
+				justify-content: center;
+				width: 100%;
+				padding-top: 10px;
+				border-top: 2px solid rgb(217, 217, 217);
+				display: flex;
+				gap: 10px; /* Adjust spacing between icons */
+				margin-top: auto; /* Align icons to the bottom */
+			}
+			.social-icons img {
+				width: 30px;
+				height: 30px;
+				transition:
+					transform 0.3s ease,
+					filter 0.3s ease;
+			}
+			.social-icons img:hover {
+				transform: scale(1.1);
+				filter: brightness(0.8);
+			}
+		</style>
+	</head>
+	<script>
+		function toggleMenu() {
+			const dropdown = document.getElementById('dropdown');
+			dropdown.style.display = dropdown.style.display === 'none' ? 'flex' : 'none';
+		}
+		window.addEventListener('resize', function () {
+			if (window.innerWidth > 800) {
+				document.getElementById('dropdown').style.display = 'none';
+			}
+		});
+	</script>
+	<!-- Navbar -->
+	<nav class="navbar shadow-md">
+		<ul>
+			<li>
+				<a style="padding-left: 0px" href="./../index.html" id="praksisProsjekt">
+					<img src="./../images/swiplogo.png" alt="Logo" class="image" />Praksisprosjekt 2024</a
+				>
+			</li>
+			<li class="hideOnMobile"><a href="./status.html">Status</a></li>
+			<li class="hideOnMobile"><a href="./oss.html">Om oss</a></li>
+			<li class="hideOnMobile"><a href="./swipload.html">Om Swipload</a></li>
+			<li class="hideOnMobile"><a href="./../index.html">Hjem</a></li>
 
-        // Reorder elements
-        var links = Array.from(x.getElementsByTagName("a"));
-        var icon = links.pop();
-        links.sort((a, b) => {
-          var order = [
-            "#praksisProsjekt",
-            "index.html",
-            "praksis.html",
-            "about.html",
-            "https://www.swipload.com/",
-          ];
-          return (
-            order.indexOf(a.getAttribute("href")) -
-            order.indexOf(b.getAttribute("href"))
-          );
-        });
-        links.push(icon);
-        links.forEach((link) => x.appendChild(link));
-      } else {
-        x.className = "navbar";
-      }
-    }
-  </script>
-  <!-- Navbar -->
-  <nav class="navbar shadow-md" id="navbar">
-    <a href="../index.html" id="praksisProsjekt">Praksisprosjekt 2024</a>
-    <a href="https://www.swipload.com/">Besøk Swipload</a>
-    <a href="../pages/status.html">Status</a>
-    <a href="../pages/oss.html">Om oss</a>
-    <a href="../pages/swipload.html">Om Swipload</a>
-    <a href="../index.html">Hjem</a>
-    <img
-      src="../images/swiplogo.png"
-      alt="Logo"
-      style="height: 50px; vertical-align: middle"
-    />
-    <a href="javascript:void(0)" class="icon" onclick="toggleMenu()">&#9776;</a>
-  </nav>
-  <body class="bg-gray-100">
-    <!-- Team Cards -->
-    <div class="container mx-auto mt-4">
-      <h2 class="text-3xl font-semibold text-center text-[#132780] mb-4">
-        Om oss
-      </h2>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-6">
-      <!-- Card 1: Nhan Thomas Nguyen -->
-      <div
-        class="flex flex-col items-center bg-white p-6 rounded-2xl shadow-lg"
-      >
-        <img
-          src="../images/thomas-profile.jpg"
-          alt="Nhan Thomas Nguyen"
-          class="w-32 h-32 rounded-full mb-4 object-cover"
-        />
-        <h3 class="text-xl font-semibold mb-4">Nhan Thomas Nguyen, 22</h3>
-        <p class="text-gray-700 mb-4">
-          Å utvikle er noe jeg har fått stor glede for, og jeg elsker å lære,
-          noe som er veldig viktig i en skiftende industri som IT.
-        </p>
-        <p class="text-gray-700 mb-4">
-          Praksisperioden kommer til å gi meg en smak om hvordan det egentlig er
-          å jobbe innenfor en bedrift og hvordan man jobber med utvikling
-          innenfor en profesjonell miljø.
-        </p>
-        <div class="social-icons">
-          <a
-            href="https://www.linkedin.com/in/nhan-thomas-nguyen-024860253/"
-            target="_blank"
-          >
-            <img src="../images/linkedin.png" alt="LinkedIn" />
-          </a>
-          <a href="https://github.com/NThomTNg" target="_blank">
-            <img src="../images/github.png" alt="GitHub" />
-          </a>
-        </div>
-      </div>
 
-      <!-- Card 2: Tony Nguyen Le -->
-      <div
-        class="flex flex-col items-center bg-white p-6 rounded-2xl shadow-lg"
-      >
-        <img
-          src="../images/tony-profile.jpg"
-          alt="Tony Nguyen Le"
-          class="w-32 h-32 rounded-full mb-4 object-cover"
-        />
-        <h3 class="text-xl font-semibold mb-4">Tony Nguyen Le, 22</h3>
-        <p class="text-gray-700 mb-4">
-          Jeg har stor interesse for datateknologi og stor trives med både
-          frontend og backendutvikling. Noe som har ført til at jeg alltid er
-          ute for å lære nye ting.
-        </p>
-        <p class="text-gray-700 mb-4">
-          Praksisperioden hos Swipload vil gi meg en mulighet til å lære mer om
-          hvordan en bedrift jobber med utvikling. Jeg ser frem til å jobbe med
-          et team og lære mer om hvordan yrkeslivet er. Gjerne bli bedre kjent
-          med Tony via nettsiden
-          <a
-            href="https://leworks.vercel.app/"
-            class="text-blue-500 hover:text-orange-500 hover:underline transition-all duration-300"
-            >LeWorks</a
-          >
-        </p>
-        <div class="social-icons">
-          <a href="https://www.linkedin.com/in/tonynl02" target="_blank">
-            <img src="../images/linkedin.png" alt="LinkedIn" />
-          </a>
-          <a href="https://github.com/TonyLe02" target="_blank">
-            <img src="../images/github.png" alt="GitHub" />
-          </a>
-        </div>
-      </div>
+			<li class="menu-button" style="float: right">
+				<a onclick="toggleMenu()"
+					><svg
+						xmlns="http://www.w3.org/2000/svg"
+						height="24px"
+						viewBox="0 -960 960 960"
+						width="24px"
+						fill="#12267f"
+					>
+						<path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" /></svg
+				></a>
+			</li>
+		</ul>
 
-      <!-- Card 3: Nicoleta -->
-      <div
-        class="flex flex-col items-center bg-white p-6 rounded-2xl shadow-lg"
-      >
-        <img
-          src="../images/nicoleta-profile.jpg"
-          alt="Nicoleta"
-          class="w-32 h-32 rounded-full mb-4 object-cover"
-        />
-        <h3 class="text-xl font-semibold mb-4">Nicoleta Pavelescu, 20</h3>
-        <p class="text-gray-700 mb-4">
-          Jeg er en tredjeårsstudent i IT og informasjonssystemer med stor
-          lidenskap for programmering.
-        </p>
-        <p class="text-gray-700 mb-4">
-          Gjennom studiet har jeg oppdaget en interesse for frontend-utvikling,
-          hvor jeg virkelig trives med å skape løsninger som både fungerer godt
-          og ser bra ut.
-        </p>
-        <p class="text-gray-700 mb-4">
-          I praksis hos Swipload gleder jeg meg til å lære mer og få verdifull
-          erfaring.
-        </p>
-        <div class="social-icons">
-          <a
-            href="https://www.linkedin.com/in/nicoleta-pavelescu/"
-            target="_blank"
-          >
-            <img src="../images/linkedin.png" alt="LinkedIn" />
-          </a>
-          <a href="https://github.com/Nicoletapa" target="_blank">
-            <img src="../images/github.png" alt="GitHub" />
-          </a>
-        </div>
-      </div>
+		<ul id="dropdown">
+			<div style="width: 100%; height: 50px">
+				<li>
+					<a style="padding-left: 0px" href="./../index.html" id="praksisProsjekt">
+						<img src="./../images/swiplogo.png" alt="Logo" class="image" />Praksisprosjekt 2024</a
+					>
+				</li>
+
+				<li>
+					<a style="float: right" onclick="toggleMenu()"
+						><svg
+							xmlns="http://www.w3.org/2000/svg"
+							height="24px"
+							viewBox="0 -960 960 960"
+							width="24px"
+							fill="#12267f"
+						>
+							<path
+								d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"
+							/></svg
+					></a>
+				</li>
+			</div>
+			<li style="padding-left: 5px"><a href="./../index.html">Hjem</a></li>
+			<li style="padding-left: 5px"><a href="./swipload.html">Om Swipload</a></li>
+			<li style="padding-left: 5px"><a href="./status.html">Status</a></li>
+			<li style="padding-left: 5px"><a href="./oss.html">Om oss</a></li>
+		</ul>
+	</nav>
+	<body class="bg-gray-100">
+		<!-- Team Cards -->
+		<div class="container mx-auto mt-4">
+			<h2 class="text-3xl font-semibold text-center mb-0">Om oss</h2>
+		</div>
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-6">
+			<!-- Card 1: Nhan Thomas Nguyen -->
+			<div class="flex flex-col items-center bg-white p-6 rounded-2xl shadow-lg">
+				<img
+					src="../images/thomas-profile.jpg"
+					alt="Nhan Thomas Nguyen"
+					class="w-32 h-32 rounded-full mb-4 object-cover"
+				/>
+				<h3 class="text-xl font-semibold mb-4">Nhan Thomas Nguyen, 22</h3>
+				<p class="text-gray-700 mb-4">
+					Å utvikle er noe jeg har fått stor glede for, og jeg elsker å lære, noe som er veldig
+					viktig i en skiftende industri som IT.
+				</p>
+				<p class="text-gray-700 mb-4">
+					Praksisperioden kommer til å gi meg en smak om hvordan det egentlig er å jobbe innenfor en
+					bedrift og hvordan man jobber med utvikling innenfor en profesjonell miljø.
+				</p>
+				<div class="social-icons">
+					<a href="https://www.linkedin.com/in/nhan-thomas-nguyen-024860253/" target="_blank">
+						<img src="../images/linkedin.png" alt="LinkedIn" />
+					</a>
+					<a href="https://github.com/NThomTNg" target="_blank">
+						<img src="../images/github.png" alt="GitHub" />
+					</a>
+				</div>
+			</div>
+
+
 
       <!-- Card 4: Ajdin -->
       <div
@@ -225,4 +173,5 @@
     <!-- Footer content -->
     <p>© 2024 Designed by Thomas, Tony, Nicoleta, and Ajdin</p>
   </footer>
+
 </html>
