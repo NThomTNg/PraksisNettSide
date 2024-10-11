@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="no">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Praksisprosjekt - Swipload</title>
     <link rel="icon" type="image/icon" href="./images/swipload-logo.png" />
     <link rel="stylesheet" href="output.css" />
-    <link rel="stylesheet" href="styles.css" />
   </head>
 
   <!-- Flowbite Navbar -->
@@ -14,9 +13,9 @@
     <div
       class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
     >
-      <a href="index.html" class="flex items-center">
+      <a href="./index.html" class="flex items-center">
         <img
-          src="images/swipload-logo.png"
+          src="./images/swipload-logo.png"
           class="h-8 mr-3"
           alt="Swipload Logo"
         />
@@ -34,7 +33,7 @@
           <svg
             id="theme-toggle-dark-icon"
             class="hidden w-5 h-5"
-            fill="currentColor"
+            fill="#00008B"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -45,7 +44,7 @@
           <svg
             id="theme-toggle-light-icon"
             class="hidden w-5 h-5"
-            fill="currentColor"
+            fill="#FFD700"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -102,14 +101,14 @@
           </li>
           <li>
             <a
-              href="./pages/oss.html"
+              href="/pages/oss.html"
               class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
               >Om oss</a
             >
           </li>
           <li>
             <a
-              href="./pages/status.html"
+              href="/pages/status.html"
               class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
               >Status</a
             >
@@ -132,7 +131,7 @@
     <div
       class="text-[#132780] dark:text-white container mx-auto text-center py-20"
     >
-      <h1 class="text-5xl font-bold">Praksisprosjekt hos Swipload</h1>
+      <h1 class="text-5xl font-bold">Praksis hos Swipload</h1>
     </div>
 
     <!-- Content -->
@@ -174,40 +173,46 @@
       "theme-toggle-light-icon"
     );
 
-    // Change the icons inside the button based on previous settings
+    // Function to update icons based on the current theme
+    function updateIcons() {
+      if (document.documentElement.classList.contains("dark")) {
+        themeToggleDarkIcon.classList.add("hidden");
+        themeToggleLightIcon.classList.remove("hidden");
+      } else {
+        themeToggleDarkIcon.classList.remove("hidden");
+        themeToggleLightIcon.classList.add("hidden");
+      }
+    }
+
+    // Initial check for theme preference
     if (
       localStorage.getItem("color-theme") === "dark" ||
       (!("color-theme" in localStorage) &&
         window.matchMedia("(prefers-color-scheme: dark)").matches)
     ) {
-      themeToggleLightIcon.classList.remove("hidden");
+      document.documentElement.classList.add("dark");
     } else {
-      themeToggleDarkIcon.classList.remove("hidden");
+      document.documentElement.classList.remove("dark");
     }
+
+    // Update icons based on the initial theme
+    updateIcons();
 
     var themeToggleBtn = document.getElementById("theme-toggle");
 
     themeToggleBtn.addEventListener("click", function () {
-      themeToggleDarkIcon.classList.toggle("hidden");
-      themeToggleLightIcon.classList.toggle("hidden");
+      // Toggle the dark class on the html element
+      document.documentElement.classList.toggle("dark");
 
-      if (localStorage.getItem("color-theme")) {
-        if (localStorage.getItem("color-theme") === "light") {
-          document.documentElement.classList.add("dark");
-          localStorage.setItem("color-theme", "dark");
-        } else {
-          document.documentElement.classList.remove("dark");
-          localStorage.setItem("color-theme", "light");
-        }
+      // Update the localStorage value
+      if (document.documentElement.classList.contains("dark")) {
+        localStorage.setItem("color-theme", "dark");
       } else {
-        if (document.documentElement.classList.contains("dark")) {
-          document.documentElement.classList.remove("dark");
-          localStorage.setItem("color-theme", "light");
-        } else {
-          document.documentElement.classList.add("dark");
-          localStorage.setItem("color-theme", "dark");
-        }
+        localStorage.setItem("color-theme", "light");
       }
+
+      // Update icons based on the new theme
+      updateIcons();
     });
   </script>
 
