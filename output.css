@@ -931,6 +931,9 @@ input[type="range"]::-ms-fill-lower {
 .mt-4 {
   margin-top: 1rem;
 }
+.mt-8 {
+  margin-top: 2rem;
+}
 .block {
   display: block;
 }
@@ -1297,6 +1300,12 @@ input[type="range"]::-ms-fill-lower {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(55 65 81 / var(--tw-ring-opacity));
 }
+@media (min-width: 640px) {
+
+  .sm\:w-1\/2 {
+    width: 50%;
+  }
+}
 @media (min-width: 768px) {
 
   .md\:order-2 {
@@ -1313,10 +1322,6 @@ input[type="range"]::-ms-fill-lower {
 
   .md\:hidden {
     display: none;
-  }
-
-  .md\:w-1\/2 {
-    width: 50%;
   }
 
   .md\:w-auto {
