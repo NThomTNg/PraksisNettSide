@@ -4,7 +4,7 @@
   "description": "Dette er nettsted som skal bli brukt igjennom praksisperioden høsten 2024, der det vil være oppdatert med status oppdateringer og refleksjon gjennom arbeidet.\r Flere deler av siden står tomt for nå, men vil bli mer fullstendig utviklet i fremtiden.",
   "main": "index.js",
   "scripts": {
-    "build:css": "postcss styles.css -o output.css"
+    "build:css": "postcss styles.css -o output.css --watch"
 
   },
   "keywords": [],
