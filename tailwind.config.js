@@ -36,6 +36,10 @@ module.exports = {
           DEFAULT: "#13267f",
           500: "#13267f",
         },
+        slred: {
+          DEFAULT: "#e60023",
+          500: "#e60023",
+        },
       },
       // extend base Tailwind CSS utility classes
     },

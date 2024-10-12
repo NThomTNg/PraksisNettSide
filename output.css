@@ -1118,14 +1118,14 @@ input[type="range"]::-ms-fill-lower {
   --tw-gradient-to: rgb(19 38 127 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
-.to-slblue-500 {
-  --tw-gradient-to: #13267f var(--tw-gradient-to-position);
-}
 .to-red-500 {
   --tw-gradient-to: #F05252 var(--tw-gradient-to-position);
 }
 .to-red-600 {
   --tw-gradient-to: #E02424 var(--tw-gradient-to-position);
+}
+.to-slred-500 {
+  --tw-gradient-to: #e60023 var(--tw-gradient-to-position);
 }
 .object-cover {
   -o-object-fit: cover;
