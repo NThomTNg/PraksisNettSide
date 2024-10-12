@@ -27,6 +27,15 @@
       opacity: 1;
       transform: translateY(0);
     }
+    .blur-loading {
+      filter: blur(20px);
+      transition: filter 2.5s ease-in-out, opacity 2.5s ease-in-out;
+    }
+
+    .blur-loaded {
+      filter: blur(0);
+      opacity: 1;
+    }
   </style>
   <body class="bg-gray-100 dark:bg-gray-900">
     <script>
@@ -178,7 +187,8 @@
           src="../images/status-1.1.png"
           alt="statusPic1"
           loading="lazy"
-          class="w-full h-auto rounded-md mb-4 mx-auto"
+          class="w-full h-auto rounded-md mb-4 mx-auto blur-loading opacity-0 transition-opacity duration-500 ease-in-out"
+          onload="this.classList.add('blur-loaded')"
         />
         <div class="text-black dark:text-white mb-4">
           <h3
@@ -267,14 +277,16 @@
             src="../images/group-photo.png"
             alt="group-photo"
             loading="lazy"
-            class="rounded-md mb-4 w-full"
+            class="rounded-md mb-4 w-full blur-loading opacity-0 transition-opacity duration-500 ease-in-out"
+            onload="this.classList.add('blur-loaded')"
           />
 
           <img
             src="../images/status2.1.png"
             alt="status-2"
             loading="lazy"
-            class="rounded-md mb-4 w-full"
+            class="rounded-md mb-4 w-full blur-loading opacity-0 transition-opacity duration-500 ease-in-out"
+            onload="this.classList.add('blur-loaded')"
           />
         </div>
         <div class="text-black dark:text-white mb-4">
@@ -407,6 +419,15 @@
 
         document.querySelectorAll(".transition").forEach((element) => {
           observer.observe(element);
+        });
+      });
+      document.addEventListener("DOMContentLoaded", function () {
+        const images = document.querySelectorAll("img");
+        images.forEach((image) => {
+          image.onload = () => {
+            image.classList.add("blur-loaded");
+            image.classList.remove("opacity-0");
+          };
         });
       });
     </script>
