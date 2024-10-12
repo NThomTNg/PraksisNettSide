@@ -32,13 +32,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        slblue: {
-          DEFAULT: "#13267f",
-          500: "#13267f",
+        slprimary: {
+          DEFAULT: "#043375",
         },
-        slred: {
-          DEFAULT: "#e60023",
-          500: "#e60023",
+        slsecondary: {
+          DEFAULT: "#ffbc58",
         },
       },
       // extend base Tailwind CSS utility classes
