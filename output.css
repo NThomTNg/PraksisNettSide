@@ -1037,9 +1037,6 @@ input[type="range"]::-ms-fill-lower {
 .justify-between {
   justify-content: space-between;
 }
-.gap-2 {
-  gap: 0.5rem;
-}
 .gap-4 {
   gap: 1rem;
 }
@@ -1393,12 +1390,16 @@ input[type="range"]::-ms-fill-lower {
 }
 @media (min-width: 640px) {
 
-  .sm\:flex {
-    display: flex;
-  }
-
   .sm\:w-1\/2 {
     width: 50%;
+  }
+
+  .sm\:w-\[\] {
+    width: ;
+  }
+
+  .sm\:w-\[75\%\] {
+    width: 75%;
   }
 
   .sm\:flex-row {
