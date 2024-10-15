@@ -1512,6 +1512,11 @@ input[type="range"]::-ms-fill-lower {
     color: rgb(255 188 88 / var(--tw-text-opacity));
   }
 
+  .md\:dark\:text-blue-500:is(.dark *) {
+    --tw-text-opacity: 1;
+    color: rgb(63 131 248 / var(--tw-text-opacity));
+  }
+
   .md\:dark\:hover\:bg-transparent:hover:is(.dark *) {
     background-color: transparent;
   }
@@ -1519,6 +1524,11 @@ input[type="range"]::-ms-fill-lower {
   .md\:dark\:hover\:text-slsecondary:hover:is(.dark *) {
     --tw-text-opacity: 1;
     color: rgb(255 188 88 / var(--tw-text-opacity));
+  }
+
+  .md\:dark\:hover\:text-blue-500:hover:is(.dark *) {
+    --tw-text-opacity: 1;
+    color: rgb(63 131 248 / var(--tw-text-opacity));
   }
 }
 @media (min-width: 1024px) {
