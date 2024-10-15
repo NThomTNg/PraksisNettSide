@@ -1,19 +1,14 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  // enable dark mode via class strategy
   darkMode: "class",
-
-  // add the folders and files from your templates
   content: [
-    "./*.html", // Adjust the paths according to your project structure
-    "./pages/*.html", // Include other directories as needed
+    "./*.html",
+    "./pages/*.html",
     "./layouts/**/*.html",
     "./content/**/*.md",
     "./content/**/*.html",
     "./src/**/*.js",
   ],
-
-  // make sure to safelist these classes when using purge
   safelist: [
     "w-64",
     "w-1/2",
@@ -27,8 +22,13 @@ module.exports = {
     "h-9",
     "leading-9",
     "shadow-lg",
+    "text-slprimary",
+    "text-slsecondary",
+    "bg-slprimary",
+    "bg-slsecondary",
+    "border-slprimary",
+    "border-slsecondary",
   ],
-
   theme: {
     extend: {
       colors: {
@@ -40,14 +40,9 @@ module.exports = {
         },
         slgray: {
           DEFAULT: "#1f2937",
-        }
+        },
       },
-      // extend base Tailwind CSS utility classes
     },
   },
-
-  plugins: [
-    // include Flowbite as a plugin in your Tailwind CSS project
-    require("flowbite/plugin"),
-  ],
+  plugins: [require("flowbite/plugin")],
 };
