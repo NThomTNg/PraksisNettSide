@@ -38,6 +38,9 @@ module.exports = {
         slsecondary: {
           DEFAULT: "#ffbc58",
         },
+        slgray: {
+          DEFAULT: "#1f2937",
+        }
       },
       // extend base Tailwind CSS utility classes
     },
