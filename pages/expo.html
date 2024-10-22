@@ -3,11 +3,44 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Status oppdateringer</title>
+    <link rel="preload" as="image" href="../images/status-1.1.png" />
+    <link rel="preload" as="image" href="../images/group-photo.png" />
+    <link rel="preload" as="image" href="../images/status2.1.png" />
+
     <link rel="icon" type="image/icon" href="../images/swipload-logo.png" />
-    <title>Praksis Swipload</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css"
+    />
     <link rel="stylesheet" href="../output.css" />
-    <link rel="stylesheet" href="../styles.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+    />
   </head>
+  <style>
+    .opacity-0 {
+      opacity: 0;
+    }
+    .transition {
+      transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+    }
+    .fade-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .blur-loading {
+      filter: blur(20px);
+      transition: filter 2.5s ease-in-out, opacity 2.5s ease-in-out;
+    }
+
+    .blur-loaded {
+      filter: blur(0);
+      opacity: 1;
+    }
+  </style>
   <body class="bg-gray-100 dark:bg-gray-900">
     <script>
       if (
@@ -108,7 +141,7 @@
             <li>
               <a
                 href="./swipload.html"
-                class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-slprimary md:p-0 dark:text-white md:dark:text-slsecondary"
+                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-slprimary md:p-0 dark:text-white md:dark:hover:text-slsecondary dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                 >Om Swipload</a
               >
             </li>
@@ -129,13 +162,13 @@
             <li>
               <a
                 href="./expo.html"
-                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-slprimary md:p-0 dark:text-white md:dark:hover:text-slsecondary dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-slprimary md:p-0 dark:text-white md:dark:text-slsecondary"
                 >Expo Video</a
               >
             </li>
             <li>
               <a
-                href="https://www.swipload.com"
+                href="https://swipload.com"
                 target="_blank"
                 class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-slprimary md:p-0 dark:text-white md:dark:hover:text-slsecondary dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                 >Besøk Swipload</a
@@ -146,83 +179,26 @@
       </div>
     </nav>
 
-    <!-- Banner -->
-    <div
-      class="text-[#132780] dark:text-white container mx-auto text-center py-20"
-    >
-      <h1 class="text-5xl font-bold">Hvem er Swipload?</h1>
-    </div>
+    <main class="container mx-auto w-full sm:w-[75%] px-4">
 
-    <div class="container mx-auto flex flex-wrap py-10 px-4 md:px-0">
-      <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-4">
-        <div class="text-section">
-          <h2
-            class="text-2xl dark:text-slsecondary text-slprimary font-semibold mb-4"
-          >
-            Swipload
-          </h2>
-          <p class="text-black dark:text-white">
-            Swipload er et oppstartsselskap som har som mål å digitalisere og
-            modernisere transportplanlegging gjennom administrasjonsprogramvare.
-            <br />
-            De ønsker å gjøre det så enkelt som mulig for selskaper å
-            administrere og håndtere transportordrer, samtidig som de får bedre
-            oversikt over logistikkprosessene sine.
-          </p>
-        </div>
-        <div class="text-section py-10">
-          <h2
-            class="text-2xl dark:text-slsecondary text-slprimary font-semibold mb-4"
-          >
-            Aktører
-          </h2>
-          <p class="text-black dark:text-white">
-            Gjennom årene har Swipload samarbeidet med flere ledende norske
-            investorer for å nå sine mål. De har et mangfold av partnere,
-            inkludert den
-            <br />
-            Stavanger-baserte bedriften DSD, programvareselskapet 24SevenOffice,
-            startup-inkubatoren The Factory, og flere andre.
-          </p>
-        </div>
-        <div class="text-section">
-          <h2
-            class="text-2xl dark:text-slsecondary text-slprimary font-semibold mb-4"
-          >
-            Kunder
-          </h2>
-          <p class="text-black dark:text-white">
-            For øyeblikket bruker flere velstående og store bedrifter Swiploads
-            produkter for å effektivisere sin transportlogistikk og
-            administrasjon.
-            <br />
-            Flere av disse kundene har rapportert økt effektivitet og er svært
-            fornøyde med Swiploads programvare. Blant disse bedriftene finner vi
-            E.A. Smith, Optimera, Doka, og mange flere.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Image Section -->
-    <div class="container mx-auto flex flex-wrap py-10 px-4 md:px-0">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
-          <img
-            src="../images/office-1.jpg"
-            alt="Office Image 1"
-            class="w-full h-auto object-cover rounded-lg shadow-md"
-          />
-        </div>
-        <div>
-          <img
-            src="../images/office-2.jpg"
-            alt="Office Image 2"
-            class="w-full h-auto object-cover rounded-lg shadow-md"
-          />
-        </div>
-      </div>
-    </div>
+        <div class="my-8">
+            <a href="https://www.youtube.com/watch?v=fV-0jL0RO44" target="_blank" class="block relative">
+              <div class="w-full h-64 sm:h-96 bg-black relative overflow-hidden rounded-lg">
+                <img 
+                  src="https://img.youtube.com/vi/fV-0jL0RO44/maxresdefault.jpg" 
+                  alt="Video thumbnail" 
+                  class="w-full h-full object-cover"
+                />
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <div class="w-20 h-16 sm:w-24 sm:h-24 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 transition-colors">
+                    <svg class="w-8 h-8 sm:w-12 sm:h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
     <script>
@@ -275,11 +251,33 @@
         // Update icons based on the new theme
         updateIcons();
       });
-    </script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("fade-in");
+            }
+          });
+        });
 
-    <footer class="text-black dark:text-white text-center py-10">
-      <!-- Footer content -->
-      <p>© 2024 Designed by Thomas, Tony, Nicoleta, and Ajdin</p>
-    </footer>
+        document.querySelectorAll(".transition").forEach((element) => {
+          observer.observe(element);
+        });
+      });
+      document.addEventListener("DOMContentLoaded", function () {
+        const images = document.querySelectorAll("img");
+        images.forEach((image) => {
+          image.onload = () => {
+            image.classList.add("blur-loaded");
+            image.classList.remove("opacity-0");
+          };
+        });
+      });
+    </script>
   </body>
+
+  <footer class="text-black dark:text-white text-center mb-4 mt-10">
+    <!-- Footer content -->
+    <p>© 2024 Designed by Thomas, Tony, Nicoleta, and Ajdin</p>
+  </footer>
 </html>
