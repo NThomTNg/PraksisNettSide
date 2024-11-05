@@ -40,6 +40,11 @@
       filter: blur(0);
       opacity: 1;
     }
+    .readable-text {
+      max-width: 65ch;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
   </style>
   <body class="bg-gray-100 dark:bg-gray-900">
     <script>
@@ -95,7 +100,7 @@
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
                 fill-rule="evenodd"
                 clip-rule="evenodd"
               ></path>
@@ -407,6 +412,82 @@
             forbedre funksjonaliteten slik at det møter opp med bedriftens
             standard.
           </p>
+        </div>
+      </div>
+      <div
+        class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-4 transition opacity-0 transform translate-y-10"
+        id="fadeInDiv"
+      >
+        <h2
+          class="text-2xl font-semibold mb-4 text-[#132780] dark:text-slsecondary"
+        >
+          Avsluttende refleksjon
+        </h2>
+        <p class="text-gray-800 dark:text-gray-300 mb-4">November 06, 2024</p>
+        <img
+          src="../images/office-3.jpg"
+          alt="statusPic1"
+          class="w-full h-auto rounded-md mb-4 mx-auto blur-loading opacity-0 transition-opacity duration-500 ease-in-out"
+          onload="this.classList.add('blur-loaded')"
+        />
+        <div class="text-black dark:text-white mb-4">
+          <h3
+            class="text-2xl font-semibold text-[#132780] dark:text-slsecondary mb-2"
+          >
+            Hva har vi lært?
+          </h3>
+          <p class="text-black dark:text-white">
+            Gjennom vårt tid hos Swipload har vi fått verdifull erfaring med
+            utvikling i en profesjonell kontekst. Hovedoppgaven vår har vært å
+            utvikle en brukervennlig side av deres applikasjon som er dedikert
+            til sjåfører, med et mål om å gi dem enkel tilgang til all nødvendig
+            informasjon knyttet til turer og fraktoppdrag. Vi fulgte UX-planen
+            som ble lagt frem for oss nøye, men vi ikke rakk å gjennomføre
+            testing av den ferdige løsningen. I samarbeid med team veileder vår
+            har vi identifisert flere områder for forbedring og oppdaget små
+            detaljer som kan justeres for å optimalisere brukeropplevelsen.
+            <br />
+            Arbeidet har i hovedsak bestått av frontend-utvikling, men også
+            enkelte backend-oppgaver for å sikre funksjonaliteten. Denne
+            perioden har gitt oss uvurderlig erfaring i hvordan det er å arbeide
+            i et profesjonelt utviklingsteam, og har styrket vår kompetanse både
+            innen utvikling og samarbeid.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row items-start gap-6 mb-4 mt-14">
+          <div class="sm:w-72">
+            <img
+              src="../images/thomas-profile.jpg"
+              alt="thomas"
+              class="w-80 h-auto rounded-md blur-loading opacity-0 transition-opacity duration-500 ease-in-out"
+              onload="this.classList.add('blur-loaded')"
+            />
+          </div>
+          <div class="flex-1">
+            <h3
+              class="text-2xl font-semibold text-[#132780] dark:text-slsecondary mb-2"
+            >
+              Thomas
+            </h3>
+            <p class="text-black dark:text-white max-w-2xl">
+              Da jeg startet praksisperioden hadde jeg ikke noen særlig
+              forventninger til hva som kom med praksisperioden, men etter tiden
+              hos Swipload har jeg lært mer enn de siste to årene til sammen.
+              Selv om jeg allerede hadde noe erfaring fra personlige prosjekter
+              og skole, har det å jobbe i et team med profesjonelle utviklere
+              gitt meg en dypere forståelse av utvikling, spesielt innen
+              struktur, kodekvalitet og samarbeid.
+              <br />
+              <br />
+              I prosjektet brukte vi hovedsakelig Svelte som frontend-rammeverk,
+              som var nytt for meg. Takket være litt bakkunnskap og utrolig god
+              veiledning, har jeg lært meg å bruke Svelte på en ganske
+              kompentent nivå. Jeg har også fått innsikt i Azure DevOps, Docker
+              og arbeid med API-er. Opplevelsen hos Swipload har vært svært
+              positiv, og jeg er veldig takknemlig for muligheten de har gitt
+              meg.
+            </p>
+          </div>
         </div>
       </div>
     </main>
