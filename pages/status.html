@@ -100,7 +100,7 @@
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
                 fill-rule="evenodd"
                 clip-rule="evenodd"
               ></path>
@@ -414,6 +414,7 @@
           </p>
         </div>
       </div>
+
       <div
         class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-4 transition opacity-0 transform translate-y-10"
         id="fadeInDiv"
@@ -454,21 +455,23 @@
             innen utvikling og samarbeid.
           </p>
         </div>
-        <div class="flex flex-col sm:flex-row items-start gap-6 mb-4 mt-14">
-          <div class="sm:w-72">
-            <img
-              src="../images/thomas-profile.jpg"
-              alt="thomas"
-              class="w-80 h-auto rounded-md blur-loading opacity-0 transition-opacity duration-500 ease-in-out"
-              onload="this.classList.add('blur-loaded')"
-            />
-          </div>
-          <div class="flex-1">
+        <div class="flex flex-col items-center gap-6 mb-4 mt-14">
+          <div class="flex flex-col items-center gap-4">
+            <div class="w-32">
+              <img
+                src="../images/thomas-profile.jpg"
+                alt="thomas"
+                class="w-32 h-32 rounded-full object-cover opacity-0 transition-opacity duration-500 ease-in-out"
+                onload="this.style.opacity = 1;"
+              />
+            </div>
             <h3
               class="text-2xl font-semibold text-[#132780] dark:text-slsecondary mb-2"
             >
               Thomas
             </h3>
+          </div>
+          <div class="flex-1 mt-4 sm:mt-0">
             <p class="text-black dark:text-white max-w-2xl">
               Da jeg startet praksisperioden hadde jeg ikke noen særlig
               forventninger til hva som kom med praksisperioden, men etter tiden
@@ -486,6 +489,101 @@
               og arbeid med API-er. Opplevelsen hos Swipload har vært svært
               positiv, og jeg er veldig takknemlig for muligheten de har gitt
               meg.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex flex-col items-center gap-6 mb-4 mt-14">
+          <div class="flex flex-col items-center gap-4">
+            <div class="w-32">
+              <img
+                src="../images/tony-profile.jpg"
+                alt="tony"
+                class="w-32 h-32 rounded-full opacity-0 transition-opacity duration-500 ease-in-out"
+                onload="this.style.opacity = 1;"
+              />
+            </div>
+            <h3
+              class="text-2xl font-semibold text-[#132780] dark:text-slsecondary mb-2"
+            >
+              Tony
+            </h3>
+          </div>
+          <div class="flex-1 mt-4 sm:mt-0">
+            <p class="text-black dark:text-white max-w-2xl">
+              Da jeg startet praksisperioden hos Swipload, var jeg nysgjerrig og
+              engasjert i å lære hvordan et profesjonelt utviklingsteam
+              arbeider. Hver dag var jeg motivert for å bidra, stille spørsmål
+              og forstå nye teknologier. Jeg har fått mye praktisk erfaring og
+              utviklet ferdigheter som jeg ikke har hatt muligheten til å jobbe
+              med tidligere.
+              <br />
+              <br />
+
+              Gjennom praksisen har jeg lært mye om frontend-utvikling, spesielt
+              med Svelte, TypeScript og Tailwind CSS. Jeg har jobbet med å bygge
+              brukergrensesnitt i henhold til Figma-designet og koblet sammen
+              funksjonaliteter som gjør appen mer intuitiv for brukerne. Jeg har
+              også fått innsikt i hvordan man jobber i et team med profesjonelle
+              utviklere, og hvordan god kommunikasjon og samarbeid er essensielt
+              for å skape et vellykket produkt.
+              <br />
+              <br />
+
+              Denne erfaringen har vært utrolig læringsrik, og jeg føler meg nå
+              bedre forberedt på å møte fremtidige utviklingsutfordringer med
+              nye tekniske ferdigheter og større selvtillit.
+            </p>
+          </div>
+        </div>
+        <div class="flex flex-col items-center gap-6 mb-4 mt-14">
+          <div class="flex flex-col items-center gap-4">
+            <div class="w-32">
+              <img
+                src="../images/nicoleta-profile.jpg"
+                alt="nicoleta"
+                class="w-32 h-32 rounded-full object-cover opacity-0 transition-opacity duration-500 ease-in-out"
+                onload="this.style.opacity = 1;"
+              />
+            </div>
+            <h3
+              class="text-2xl font-semibold text-[#132780] dark:text-slsecondary mb-2"
+            >
+              Nicoleta
+            </h3>
+          </div>
+          <div class="flex-1 mt-4 sm:mt-0">
+            <p class="text-black dark:text-white max-w-2xl">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+              <br />
+              <br />
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+            </p>
+          </div>
+        </div>
+
+        <div class="flex flex-col items-center gap-6 mb-4 mt-14">
+          <div class="flex flex-col items-center gap-4">
+            <div class="w-32">
+              <img
+                src="../images/ajdin-profile.jpg"
+                alt="ajdin"
+                class="w-32 h-32 rounded-full object-cover opacity-0 transition-opacity duration-500 ease-in-out"
+                onload="this.style.opacity = 1;"
+              />
+            </div>
+            <h3
+              class="text-2xl font-semibold text-[#132780] dark:text-slsecondary mb-2"
+            >
+              Ajdin
+            </h3>
+          </div>
+          <div class="flex-1 mt-4 sm:mt-0">
+            <p class="text-black dark:text-white max-w-2xl">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+              <br />
+              <br />
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
             </p>
           </div>
         </div>
