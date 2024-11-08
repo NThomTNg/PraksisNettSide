@@ -1,708 +1,648 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="no">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Status oppdateringer</title>
-    <link rel="preload" as="image" href="../images/status-1.1.png" />
-    <link rel="preload" as="image" href="../images/group-photo.png" />
-    <link rel="preload" as="image" href="../images/status2.1.png" />
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Status oppdateringer</title>
+		<link rel="preload" as="image" href="../images/status-1.1.png" />
+		<link rel="preload" as="image" href="../images/group-photo.png" />
+		<link rel="preload" as="image" href="../images/status2.1.png" />
 
-    <link rel="icon" type="image/icon" href="../images/swipload-logo.png" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css"
-    />
-    <link rel="stylesheet" href="../output.css" />
+		<link rel="icon" type="image/icon" href="../images/swipload-logo.png" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css"
+		/>
+		<link rel="stylesheet" href="../output.css" />
 
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
-    />
-  </head>
-  <style>
-    .opacity-0 {
-      opacity: 0;
-    }
-    .transition {
-      transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-    }
-    .fade-in {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .blur-loading {
-      filter: blur(20px);
-      transition: filter 2.5s ease-in-out, opacity 2.5s ease-in-out;
-    }
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+		/>
+	</head>
+	<style>
+		.opacity-0 {
+			opacity: 0;
+		}
+		.transition {
+			transition:
+				opacity 1s ease-in-out,
+				transform 1s ease-in-out;
+		}
+		.fade-in {
+			opacity: 1;
+			transform: translateY(0);
+		}
+		.blur-loading {
+			filter: blur(20px);
+			transition:
+				filter 2.5s ease-in-out,
+				opacity 2.5s ease-in-out;
+		}
 
-    .blur-loaded {
-      filter: blur(0);
-      opacity: 1;
-    }
-    .readable-text {
-      max-width: 65ch;
-      line-height: 1.6;
-      margin-bottom: 1rem;
-    }
-  </style>
-  <body class="bg-gray-100 dark:bg-gray-900">
-    <script>
-      if (
-        localStorage.getItem("color-theme") === "dark" ||
-        (!("color-theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ) {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
-    </script>
+		.blur-loaded {
+			filter: blur(0);
+			opacity: 1;
+		}
+		.readable-text {
+			max-width: 65ch;
+			line-height: 1.6;
+			margin-bottom: 1rem;
+		}
+	</style>
+	<body class="bg-gray-100 dark:bg-gray-900">
+		<script>
+			if (
+				localStorage.getItem('color-theme') === 'dark' ||
+				(!('color-theme' in localStorage) &&
+					window.matchMedia('(prefers-color-scheme: dark)').matches)
+			) {
+				document.documentElement.classList.add('dark');
+			} else {
+				document.documentElement.classList.remove('dark');
+			}
+		</script>
 
-    <!-- Flowbite Navbar -->
-    <nav class="bg-white dark:bg-gray-900">
-      <div
-        class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
-      >
-        <a href="../index.html" class="flex items-center">
-          <img
-            src="../images/swipload-logo.png"
-            class="h-8 mr-3 dark:bg-white rounded-md"
-            alt="Swipload Logo"
-          />
-          <span
-            class="self-center text-2xl text-gray-800 font-semibold whitespace-nowrap dark:text-white"
-            >Praksisprosjekt 2024</span
-          >
-        </a>
-        <div class="flex md:order-2">
-          <button
-            id="theme-toggle"
-            type="button"
-            class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5"
-          >
-            <svg
-              id="theme-toggle-dark-icon"
-              class="hidden w-5 h-5"
-              fill="#00008B"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
-              ></path>
-            </svg>
-            <svg
-              id="theme-toggle-light-icon"
-              class="hidden w-5 h-5"
-              fill="#ffbc58"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
-          </button>
-          <button
-            data-collapse-toggle="navbar-default"
-            type="button"
-            class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-            aria-controls="navbar-default"
-            aria-expanded="false"
-          >
-            <span class="sr-only">Open main menu</span>
-            <svg
-              class="w-5 h-5"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 17 14"
-            >
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M1 1h15M1 7h15M1 13h15"
-              />
-            </svg>
-          </button>
-        </div>
-        <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-          <ul
-            class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
-          >
-            <li>
-              <a
-                href="../index.html"
-                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-slprimary md:p-0 dark:text-white md:dark:hover:text-slsecondary dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                aria-current="page"
-                >Hjem</a
-              >
-            </li>
-            <li>
-              <a
-                href="./swipload.html"
-                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-slprimary md:p-0 dark:text-white md:dark:hover:text-slsecondary dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                >Om Swipload</a
-              >
-            </li>
-            <li>
-              <a
-                href="./oss.html"
-                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-slprimary md:p-0 dark:text-white md:dark:hover:text-slsecondary dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                >Om oss</a
-              >
-            </li>
-            <li>
-              <a
-                href="./status.html"
-                class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-slprimary md:p-0 dark:text-white md:dark:text-slsecondary"
-                >Status</a
-              >
-            </li>
-            <li>
-              <a
-                href="./expo.html"
-                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-slprimary md:p-0 dark:text-white md:dark:hover:text-slsecondary dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                >Expo Video</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://swipload.com"
-                target="_blank"
-                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-slprimary md:p-0 dark:text-white md:dark:hover:text-slsecondary dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                >Besøk Swipload</a
-              >
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+		<!-- Flowbite Navbar -->
+		<nav class="bg-white dark:bg-gray-900">
+			<div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+				<a href="../index.html" class="flex items-center">
+					<img
+						src="../images/swipload-logo.png"
+						class="h-8 mr-3 dark:bg-white rounded-md"
+						alt="Swipload Logo"
+					/>
+					<span
+						class="self-center text-2xl text-gray-800 font-semibold whitespace-nowrap dark:text-white"
+						>Praksisprosjekt 2024</span
+					>
+				</a>
+				<div class="flex md:order-2">
+					<button
+						id="theme-toggle"
+						type="button"
+						class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5"
+					>
+						<svg
+							id="theme-toggle-dark-icon"
+							class="hidden w-5 h-5"
+							fill="#00008B"
+							viewBox="0 0 20 20"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+						</svg>
+						<svg
+							id="theme-toggle-light-icon"
+							class="hidden w-5 h-5"
+							fill="#ffbc58"
+							viewBox="0 0 20 20"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+								fill-rule="evenodd"
+								clip-rule="evenodd"
+							></path>
+						</svg>
+					</button>
+					<button
+						data-collapse-toggle="navbar-default"
+						type="button"
+						class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+						aria-controls="navbar-default"
+						aria-expanded="false"
+					>
+						<span class="sr-only">Open main menu</span>
+						<svg
+							class="w-5 h-5"
+							aria-hidden="true"
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 17 14"
+						>
+							<path
+								stroke="currentColor"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M1 1h15M1 7h15M1 13h15"
+							/>
+						</svg>
+					</button>
+				</div>
+				<div class="hidden w-full md:block md:w-auto" id="navbar-default">
+					<ul
+						class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+					>
+						<li>
+							<a
+								href="../index.html"
+								class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-slprimary md:p-0 dark:text-white md:dark:hover:text-slsecondary dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+								aria-current="page"
+								>Hjem</a
+							>
+						</li>
+						<li>
+							<a
+								href="./swipload.html"
+								class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-slprimary md:p-0 dark:text-white md:dark:hover:text-slsecondary dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+								>Om Swipload</a
+							>
+						</li>
+						<li>
+							<a
+								href="./oss.html"
+								class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-slprimary md:p-0 dark:text-white md:dark:hover:text-slsecondary dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+								>Om oss</a
+							>
+						</li>
+						<li>
+							<a
+								href="./status.html"
+								class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-slprimary md:p-0 dark:text-white md:dark:text-slsecondary"
+								>Status</a
+							>
+						</li>
+						<li>
+							<a
+								href="./expo.html"
+								class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-slprimary md:p-0 dark:text-white md:dark:hover:text-slsecondary dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+								>Expo Video</a
+							>
+						</li>
+						<li>
+							<a
+								href="https://swipload.com"
+								target="_blank"
+								class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-slprimary md:p-0 dark:text-white md:dark:hover:text-slsecondary dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+								>Besøk Swipload</a
+							>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
 
-    <main class="container mx-auto w-full sm:w-[75%] px-4">
-      <h1
-        class="text-5xl font-bold py-20 text-center text-[#132780] dark:text-white"
-      >
-        Swipload Status
-      </h1>
-      <!-- Status 1 -->
-      <div
-        class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-4 transition opacity-0 transform translate-y-10"
-        id="fadeInDiv"
-      >
-        <h2
-          class="text-2xl font-semibold mb-4 text-[#132780] dark:text-slsecondary"
-        >
-          Internship Update - Status 1
-        </h2>
-        <p class="text-gray-800 dark:text-gray-300 mb-4">September 16, 2024</p>
-        <img
-          src="../images/status-1.1.png"
-          alt="statusPic1"
-          class="w-full h-auto rounded-md mb-4 mx-auto blur-loading opacity-0 transition-opacity duration-500 ease-in-out"
-          onload="this.classList.add('blur-loaded')"
-        />
-        <div class="text-black dark:text-white mb-4">
-          <h3
-            class="text-2xl font-semibold text-[#132780] dark:text-slsecondary mb-2"
-          >
-            Hva har vi jobbet med så langt?
-          </h3>
-          <p class="text-black dark:text-white">
-            Tre uker har nå gått siden vi startet vårt internship hos Swipload,
-            og det har vært en innholdsrik periode full av læring og spennende
-            utfordringer. Swipload er en programvare for fraktstyring som gjør
-            det mulig for sjåfører å administrere og spore fraktordrer via
-            telefonen sin. Her er en oppdatering om hva vi har jobbet med, våre
-            hovedoppgaver, og hva vi ser frem til i de kommende ukene!
-          </p>
-        </div>
-        <h3
-          class="text-2xl font-semibold text-[#132780] dark:text-slsecondary mb-2"
-        >
-          Introduksjon til prosjektet
-        </h3>
-        <p class="text-black dark:text-white mb-4">
-          Hovedfokuset i praksisperioden har vært utviklingen av "Driver View"
-          for mobilversjonen av Swipload-appen. Denne funksjonen gir sjåførene
-          en effektiv måte å håndtere fraktordrer på, fra godkjenning av frakt
-          til signering ved henting. Vi har fått en grundig innsikt i hvordan
-          det er å jobbe med profesjonell programvareutvikling, både teknisk og
-          samarbeidende. Med veiledning fra erfarne utviklere som
-          <em>Eyvind</em>, har vi fått en solid forståelse av verktøyene som
-          brukes, som Docker, Azure DevOps og Figma for UI-design.
-        </p>
-        <p class="text-black dark:text-white mb-4">
-          Vi er en gruppe studenter som jobber sammen:
-          <em>Nhan Thomas Nguyen</em> (22), <em>Tony Nguyen Le</em> (22),
-          <em>Nicoleta Pavelescu</em> (20) og <em>Ajdin Smajic</em> (23). For
-          øyeblikket jobber vi med forskjellige aspekter av prosjektet.
-          <em>Thomas</em> og <em>Nicoleta</em> fokuserer på carousel-funksjonen
-          for "Todo"-siden, mens vi andre arbeider med "Todo"-siden og
-          "Approve"-siden. Vi har delt oppgavene slik at to og to jobber sammen
-          for å finne den beste fremgangsmåten og dele erfaringer med hverandre.
-        </p>
-        <h3
-          class="text-2xl font-semibold text-[#132780] dark:text-slsecondary mb-2"
-        >
-          Hovedoppgaver
-        </h3>
-        <p class="mb-4 dark:text-white">
-          <strong>Frontend-arbeid:</strong> Vi har implementert design fra Figma
-          til fungerende UI, med særlig fokus på å utvikle dynamiske sider og
-          navigasjonselementer.
-        </p>
-        <p class="mb-4 dark:text-white">
-          <strong>Backend-integrasjon:</strong> Vi har begynt å koble knapper
-          som "Approve" og "Decline" til backend-funksjonalitet, slik at
-          statusen for shipment-ordrer kan oppdateres i sanntid.
-        </p>
-        <p class="mb-4 dark:text-white">
-          <strong>Samarbeid og erfaringsutveksling:</strong> Vi har hatt
-          kodegjennomganger og problemløsing i teamet, noe som har forbedret
-          våre ferdigheter i både frontend og backend utvikling.
-        </p>
-        <h3
-          class="text-2xl font-semibold text-[#132780] dark:text-slsecondary mb-2"
-        >
-          Veien Videre
-        </h3>
-        <p class="mb-4 dark:text-white">
-          De kommende ukene ser vi frem til å fortsette med integrasjonen mellom
-          frontend og backend, samt forberede systemet for beta-testing av
-          sjåfører som skal bruke den nye "Driver View". Vi vil også jobbe
-          videre med å forbedre gjenbrukbare komponenter og sikre at design og
-          funksjonalitet samsvarer med brukernes behov. Alt i alt har
-          praksisperioden vært svært lærerik så langt, og vi gleder oss til å
-          fortsette utviklingen!
-        </p>
-        <p class="mb-4 dark:text-white">
-          Hold deg oppdatert for flere spennende nyheter i ukene som kommer!
-        </p>
-      </div>
+		<main class="container mx-auto w-full sm:w-[75%] px-4">
+			<h1 class="text-5xl font-bold py-20 text-center text-[#132780] dark:text-white">
+				Swipload Status
+			</h1>
+			<!-- Status 1 -->
+			<div
+				class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-4 transition opacity-0 transform translate-y-10"
+				id="fadeInDiv"
+			>
+				<h2 class="text-2xl font-semibold mb-4 text-[#132780] dark:text-slsecondary">
+					Internship Update - Status 1
+				</h2>
+				<p class="text-gray-800 dark:text-gray-300 mb-4">September 16, 2024</p>
+				<img
+					src="../images/status-1.1.png"
+					alt="statusPic1"
+					class="w-full h-auto rounded-md mb-4 mx-auto blur-loading opacity-0 transition-opacity duration-500 ease-in-out"
+					onload="this.classList.add('blur-loaded')"
+				/>
+				<div class="text-black dark:text-white mb-4">
+					<h3 class="text-2xl font-semibold text-[#132780] dark:text-slsecondary mb-2">
+						Hva har vi jobbet med så langt?
+					</h3>
+					<p class="text-black dark:text-white">
+						Tre uker har nå gått siden vi startet vårt internship hos Swipload, og det har vært en
+						innholdsrik periode full av læring og spennende utfordringer. Swipload er en programvare
+						for fraktstyring som gjør det mulig for sjåfører å administrere og spore fraktordrer via
+						telefonen sin. Her er en oppdatering om hva vi har jobbet med, våre hovedoppgaver, og
+						hva vi ser frem til i de kommende ukene!
+					</p>
+				</div>
+				<h3 class="text-2xl font-semibold text-[#132780] dark:text-slsecondary mb-2">
+					Introduksjon til prosjektet
+				</h3>
+				<p class="text-black dark:text-white mb-4">
+					Hovedfokuset i praksisperioden har vært utviklingen av "Driver View" for mobilversjonen av
+					Swipload-appen. Denne funksjonen gir sjåførene en effektiv måte å håndtere fraktordrer på,
+					fra godkjenning av frakt til signering ved henting. Vi har fått en grundig innsikt i
+					hvordan det er å jobbe med profesjonell programvareutvikling, både teknisk og
+					samarbeidende. Med veiledning fra erfarne utviklere som
+					<em>Eyvind</em>, har vi fått en solid forståelse av verktøyene som brukes, som Docker,
+					Azure DevOps og Figma for UI-design.
+				</p>
+				<p class="text-black dark:text-white mb-4">
+					Vi er en gruppe studenter som jobber sammen:
+					<em>Nhan Thomas Nguyen</em> (22), <em>Tony Nguyen Le</em> (22),
+					<em>Nicoleta Pavelescu</em> (20) og <em>Ajdin Smajic</em> (23). For øyeblikket jobber vi
+					med forskjellige aspekter av prosjektet. <em>Thomas</em> og <em>Nicoleta</em> fokuserer på
+					carousel-funksjonen for "Todo"-siden, mens vi andre arbeider med "Todo"-siden og
+					"Approve"-siden. Vi har delt oppgavene slik at to og to jobber sammen for å finne den
+					beste fremgangsmåten og dele erfaringer med hverandre.
+				</p>
+				<h3 class="text-2xl font-semibold text-[#132780] dark:text-slsecondary mb-2">
+					Hovedoppgaver
+				</h3>
+				<p class="mb-4 dark:text-white">
+					<strong>Frontend-arbeid:</strong> Vi har implementert design fra Figma til fungerende UI,
+					med særlig fokus på å utvikle dynamiske sider og navigasjonselementer.
+				</p>
+				<p class="mb-4 dark:text-white">
+					<strong>Backend-integrasjon:</strong> Vi har begynt å koble knapper som "Approve" og
+					"Decline" til backend-funksjonalitet, slik at statusen for shipment-ordrer kan oppdateres
+					i sanntid.
+				</p>
+				<p class="mb-4 dark:text-white">
+					<strong>Samarbeid og erfaringsutveksling:</strong> Vi har hatt kodegjennomganger og
+					problemløsing i teamet, noe som har forbedret våre ferdigheter i både frontend og backend
+					utvikling.
+				</p>
+				<h3 class="text-2xl font-semibold text-[#132780] dark:text-slsecondary mb-2">
+					Veien Videre
+				</h3>
+				<p class="mb-4 dark:text-white">
+					De kommende ukene ser vi frem til å fortsette med integrasjonen mellom frontend og
+					backend, samt forberede systemet for beta-testing av sjåfører som skal bruke den nye
+					"Driver View". Vi vil også jobbe videre med å forbedre gjenbrukbare komponenter og sikre
+					at design og funksjonalitet samsvarer med brukernes behov. Alt i alt har praksisperioden
+					vært svært lærerik så langt, og vi gleder oss til å fortsette utviklingen!
+				</p>
+				<p class="mb-4 dark:text-white">
+					Hold deg oppdatert for flere spennende nyheter i ukene som kommer!
+				</p>
+			</div>
 
-      <!-- Status 2 -->
-      <div
-        class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mt-8 mb-4 transition opacity-0 transform translate-y-10"
-        id="fadeInDiv"
-      >
-        <h2
-          class="text-2xl font-semibold mb-4 text-[#132780] dark:text-slsecondary"
-        >
-          Internship Update - Status 2
-        </h2>
-        <p class="text-gray-800 dark:text-gray-300 mb-4">Oktober 18, 2024</p>
-        <div class="flex flex-col sm:flex-row gap-4">
-          <div class="flex-1">
-            <img
-              src="../images/group-photo.png"
-              alt="group-photo"
-              class="rounded-md mb-4 w-full h-auto blur-loading opacity-0 transition-opacity duration-500 ease-in-out"
-              onload="this.classList.add('blur-loaded')"
-            />
-          </div>
-          <div class="flex-1">
-            <img
-              src="../images/status2.1.png"
-              alt="status-2"
-              class="rounded-md mb-4 w-full h-auto blur-loading opacity-0 transition-opacity duration-500 ease-in-out"
-              onload="this.classList.add('blur-loaded')"
-            />
-          </div>
-        </div>
-        <div class="text-black dark:text-white mb-4">
-          <h3
-            class="text-2xl font-semibold text-[#132780] dark:text-slsecondary mb-2"
-          >
-            Bedrift
-          </h3>
-          <p class="text-black dark:text-white">
-            Swipload Technologies AS er et selskap som spesialiserer seg på
-            digital logistikk og transportløsninger. De utvikler teknologi som
-            hjelper transportører med å optimalisere fraktprosesser, redusere
-            kostnader, og forbedre effektiviteten ved å bruke digitale verktøy
-            og plattformer. Selskapet fokuserer på å gjøre logistikk enklere og
-            mer tilgjengelig gjennom innovative løsninger.
-          </p>
-        </div>
-        <div class="text-black dark:text-white mb-4">
-          <h3
-            class="text-2xl font-semibold text-[#132780] dark:text-slsecondary mb-2"
-          >
-            Arbeidet så langt
-          </h3>
-          <p class="text-black dark:text-white mb-4">
-            Siden vår forrige oppdatering har vi gjort betydelige fremskritt i
-            utviklingen av "Driver View" for mobilversjonen av Swipload-appen.
-            Vi har hatt fokus på å integrere frontend- og
-            backend-funksjonalitet, noe som har sikret at appen oppdaterer
-            ordrestatus i sanntid. Dette var en viktig milepæl som markerer at
-            vi nå har en sømløs flyt mellom brukergrensesnitt og systemets
-            backend.
-            <br />
-            <br />
-            Vi har også jobbet tett med våre veiledere, som har hjulpet oss med
-            å strukturere prosjektet på en mer effektiv måte. Ved å bryte ned
-            koden i mindre komponenter har vi sikret at løsningen blir mer
-            modulær og lett å vedlikeholde. Dette har gjort prosjektet mer
-            oversiktlig og enklere å videreutvikle, samtidig som vi har
-            forbedret våre arbeidsvaner rundt kodeskriving og bruk av verktøy
-            for versjonskontroll.
-            <br />
-            <br />
-            Samarbeidet i teamet har vært en viktig del av prosessen. Gjennom
-            regelmessige møter og kodegjennomganger har vi fått nyttige
-            tilbakemeldinger og løst utfordringer sammen. Dette har styrket vår
-            forståelse av hvordan profesjonelle utviklingsteam arbeider, og vi
-            har også fått verdifulle råd om hvordan vi kan forbedre kvaliteten
-            på koden vår.
-          </p>
-        </div>
-        <div class="text-black dark:text-white mb-4">
-          <h3
-            class="text-2xl font-semibold text-[#132780] dark:text-slsecondary mb-2"
-          >
-            Erfaringer
-          </h3>
-          <p class="text-black dark:text-white">
-            Arbeidsfordelingen i gruppen har fungert effektivt, blant annet ved
-            bruk av DevOps for å fordele oppgavene i ulike moduler. Vi valgte å
-            la to og to samarbeide om en oppgave, noe vi mener har fungert godt.
-            Selv om noen av oppgavene var mer krevende enn andre og krevde
-            større oppmerksomhet, har gruppen håndtert disse utfordringene på en
-            god måte.
-            <br />
-            <br />
-            I løpet av praksisperioden har vi tilegnet oss betydelig kompetanse
-            innen programmering. Vi har lært oss TypeScript og Svelte for å
-            utvikle Driver View, samtidig som vi har forbedret våre ferdigheter
-            i bruk av Docker og Git. Arbeidet med Swipload har gitt oss en
-            dypere forståelse av hvordan man skriver ryddig og gjenbrukbar kode.
-            Selv om gruppen tidvis møtte utfordringer, som merge-konflikter
-            eller problemer med å koble til backend, har veiledningen fra
-            Swipload hjulpet oss med å løse disse problemene. Dette har gjort
-            læringsprosessen både utfordrende og givende.
-          </p>
-        </div>
+			<!-- Status 2 -->
+			<div
+				class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mt-8 mb-4 transition opacity-0 transform translate-y-10"
+				id="fadeInDiv"
+			>
+				<h2 class="text-2xl font-semibold mb-4 text-[#132780] dark:text-slsecondary">
+					Internship Update - Status 2
+				</h2>
+				<p class="text-gray-800 dark:text-gray-300 mb-4">Oktober 18, 2024</p>
+				<div class="flex flex-col sm:flex-row gap-4">
+					<div class="flex-1">
+						<img
+							src="../images/group-photo.png"
+							alt="group-photo"
+							class="rounded-md mb-4 w-full h-auto blur-loading opacity-0 transition-opacity duration-500 ease-in-out"
+							onload="this.classList.add('blur-loaded')"
+						/>
+					</div>
+					<div class="flex-1">
+						<img
+							src="../images/status2.1.png"
+							alt="status-2"
+							class="rounded-md mb-4 w-full h-auto blur-loading opacity-0 transition-opacity duration-500 ease-in-out"
+							onload="this.classList.add('blur-loaded')"
+						/>
+					</div>
+				</div>
+				<div class="text-black dark:text-white mb-4">
+					<h3 class="text-2xl font-semibold text-[#132780] dark:text-slsecondary mb-2">Bedrift</h3>
+					<p class="text-black dark:text-white">
+						Swipload Technologies AS er et selskap som spesialiserer seg på digital logistikk og
+						transportløsninger. De utvikler teknologi som hjelper transportører med å optimalisere
+						fraktprosesser, redusere kostnader, og forbedre effektiviteten ved å bruke digitale
+						verktøy og plattformer. Selskapet fokuserer på å gjøre logistikk enklere og mer
+						tilgjengelig gjennom innovative løsninger.
+					</p>
+				</div>
+				<div class="text-black dark:text-white mb-4">
+					<h3 class="text-2xl font-semibold text-[#132780] dark:text-slsecondary mb-2">
+						Arbeidet så langt
+					</h3>
+					<p class="text-black dark:text-white mb-4">
+						Siden vår forrige oppdatering har vi gjort betydelige fremskritt i utviklingen av
+						"Driver View" for mobilversjonen av Swipload-appen. Vi har hatt fokus på å integrere
+						frontend- og backend-funksjonalitet, noe som har sikret at appen oppdaterer ordrestatus
+						i sanntid. Dette var en viktig milepæl som markerer at vi nå har en sømløs flyt mellom
+						brukergrensesnitt og systemets backend.
+						<br />
+						<br />
+						Vi har også jobbet tett med våre veiledere, som har hjulpet oss med å strukturere
+						prosjektet på en mer effektiv måte. Ved å bryte ned koden i mindre komponenter har vi
+						sikret at løsningen blir mer modulær og lett å vedlikeholde. Dette har gjort prosjektet
+						mer oversiktlig og enklere å videreutvikle, samtidig som vi har forbedret våre
+						arbeidsvaner rundt kodeskriving og bruk av verktøy for versjonskontroll.
+						<br />
+						<br />
+						Samarbeidet i teamet har vært en viktig del av prosessen. Gjennom regelmessige møter og
+						kodegjennomganger har vi fått nyttige tilbakemeldinger og løst utfordringer sammen.
+						Dette har styrket vår forståelse av hvordan profesjonelle utviklingsteam arbeider, og vi
+						har også fått verdifulle råd om hvordan vi kan forbedre kvaliteten på koden vår.
+					</p>
+				</div>
+				<div class="text-black dark:text-white mb-4">
+					<h3 class="text-2xl font-semibold text-[#132780] dark:text-slsecondary mb-2">
+						Erfaringer
+					</h3>
+					<p class="text-black dark:text-white">
+						Arbeidsfordelingen i gruppen har fungert effektivt, blant annet ved bruk av DevOps for å
+						fordele oppgavene i ulike moduler. Vi valgte å la to og to samarbeide om en oppgave, noe
+						vi mener har fungert godt. Selv om noen av oppgavene var mer krevende enn andre og
+						krevde større oppmerksomhet, har gruppen håndtert disse utfordringene på en god måte.
+						<br />
+						<br />
+						I løpet av praksisperioden har vi tilegnet oss betydelig kompetanse innen programmering.
+						Vi har lært oss TypeScript og Svelte for å utvikle Driver View, samtidig som vi har
+						forbedret våre ferdigheter i bruk av Docker og Git. Arbeidet med Swipload har gitt oss
+						en dypere forståelse av hvordan man skriver ryddig og gjenbrukbar kode. Selv om gruppen
+						tidvis møtte utfordringer, som merge-konflikter eller problemer med å koble til backend,
+						har veiledningen fra Swipload hjulpet oss med å løse disse problemene. Dette har gjort
+						læringsprosessen både utfordrende og givende.
+					</p>
+				</div>
 
-        <div class="text-black dark:text-white mb-4">
-          <h3
-            class="text-2xl font-semibold text-[#132780] dark:text-slsecondary mb-2"
-          >
-            Veien videre
-          </h3>
-          <p class="text-black dark:text-white">
-            I løpet av vår tid med Swipload har vi jobbet mye med vår oppdrag,
-            og har blitt kjent med systemet og hvordan det fungerer. Vi har også
-            blitt informert at dersom vi når et stabilt punkt i prosjektet, vil
-            den bli implementert i bedriftens produksjon og testet. Vi er ivrige
-            på å se hvordan vårt arbeid vil bli brukt, og hva resultatet fra
-            testene vil bli.
-            <br />
-            <br />
-            Gruppen har nå vært hos Swipload i snart tre måneder. For resten av
-            praksisperioden skal vi fortsette med å utvikle "driver"
-            funksjonaliteten videre. Siden vi nærmer oss målet med å få på plass
-            funksjonaliteten, vil vi fortsette med å fin pusse modulene og
-            forbedre funksjonaliteten slik at det møter opp med bedriftens
-            standard.
-          </p>
-        </div>
-      </div>
+				<div class="text-black dark:text-white mb-4">
+					<h3 class="text-2xl font-semibold text-[#132780] dark:text-slsecondary mb-2">
+						Veien videre
+					</h3>
+					<p class="text-black dark:text-white">
+						I løpet av vår tid med Swipload har vi jobbet mye med vår oppdrag, og har blitt kjent
+						med systemet og hvordan det fungerer. Vi har også blitt informert at dersom vi når et
+						stabilt punkt i prosjektet, vil den bli implementert i bedriftens produksjon og testet.
+						Vi er ivrige på å se hvordan vårt arbeid vil bli brukt, og hva resultatet fra testene
+						vil bli.
+						<br />
+						<br />
+						Gruppen har nå vært hos Swipload i snart tre måneder. For resten av praksisperioden skal
+						vi fortsette med å utvikle "driver" funksjonaliteten videre. Siden vi nærmer oss målet
+						med å få på plass funksjonaliteten, vil vi fortsette med å fin pusse modulene og
+						forbedre funksjonaliteten slik at det møter opp med bedriftens standard.
+					</p>
+				</div>
+			</div>
 
-      <div
-        class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-4 transition opacity-0 transform translate-y-10"
-        id="fadeInDiv"
-      >
-        <h2
-          class="text-2xl font-semibold mb-4 text-[#132780] dark:text-slsecondary"
-        >
-          Avsluttende refleksjon
-        </h2>
-        <p class="text-gray-800 dark:text-gray-300 mb-4">November 06, 2024</p>
-        <img
-          src="../images/office-3.jpg"
-          alt="statusPic1"
-          class="w-full h-auto rounded-md mb-4 mx-auto blur-loading opacity-0 transition-opacity duration-500 ease-in-out"
-          onload="this.classList.add('blur-loaded')"
-        />
-        <div class="text-black dark:text-white mb-4">
-          <h3
-            class="text-2xl font-semibold text-[#132780] dark:text-slsecondary mb-2"
-          >
-            Hva har vi lært?
-          </h3>
-          <p class="text-black dark:text-white">
-            Gjennom vårt tid hos Swipload har vi fått verdifull erfaring med
-            utvikling i en profesjonell kontekst. Hovedoppgaven vår har vært å
-            utvikle en brukervennlig side av deres applikasjon som er dedikert
-            til sjåfører, med et mål om å gi dem enkel tilgang til all nødvendig
-            informasjon knyttet til turer og fraktoppdrag. Vi fulgte UX-planen
-            som ble lagt frem for oss nøye, men vi ikke rakk å gjennomføre
-            testing av den ferdige løsningen. I samarbeid med team veileder vår
-            har vi identifisert flere områder for forbedring og oppdaget små
-            detaljer som kan justeres for å optimalisere brukeropplevelsen.
-            <br />
-            Arbeidet har i hovedsak bestått av frontend-utvikling, men også
-            enkelte backend-oppgaver for å sikre funksjonaliteten. Denne
-            perioden har gitt oss uvurderlig erfaring i hvordan det er å arbeide
-            i et profesjonelt utviklingsteam, og har styrket vår kompetanse både
-            innen utvikling og samarbeid.
-          </p>
-        </div>
-      </div>
+			<div
+				class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-4 transition opacity-0 transform translate-y-10"
+				id="fadeInDiv"
+			>
+				<h2 class="text-2xl font-semibold mb-4 text-[#132780] dark:text-slsecondary">
+					Avsluttende refleksjon
+				</h2>
+				<p class="text-gray-800 dark:text-gray-300 mb-4">November 06, 2024</p>
+				<img
+					src="../images/office-3.jpg"
+					alt="statusPic1"
+					class="w-full h-auto rounded-md mb-4 mx-auto blur-loading opacity-0 transition-opacity duration-500 ease-in-out"
+					onload="this.classList.add('blur-loaded')"
+				/>
+				<div class="text-black dark:text-white mb-4">
+					<h3 class="text-2xl font-semibold text-[#132780] dark:text-slsecondary mb-2">
+						Hva har vi lært?
+					</h3>
+					<p class="text-black dark:text-white">
+						Gjennom vårt tid hos Swipload har vi fått verdifull erfaring med utvikling i en
+						profesjonell kontekst. Hovedoppgaven vår har vært å utvikle en brukervennlig side av
+						deres applikasjon som er dedikert til sjåfører, med et mål om å gi dem enkel tilgang til
+						all nødvendig informasjon knyttet til turer og fraktoppdrag. Vi fulgte UX-planen som ble
+						lagt frem for oss nøye, men vi ikke rakk å gjennomføre testing av den ferdige løsningen.
+						I samarbeid med team veileder vår har vi identifisert flere områder for forbedring og
+						oppdaget små detaljer som kan justeres for å optimalisere brukeropplevelsen.
+						<br />
+						Arbeidet har i hovedsak bestått av frontend-utvikling, men også enkelte backend-oppgaver
+						for å sikre funksjonaliteten. Denne perioden har gitt oss uvurderlig erfaring i hvordan
+						det er å arbeide i et profesjonelt utviklingsteam, og har styrket vår kompetanse både
+						innen utvikling og samarbeid.
+					</p>
+				</div>
+			</div>
 
-      <h2
-        class="text-3xl font-semibold mt-24 mb-4 text-center text-[#132780] dark:text-white"
-      >
-        Noen ord fra oss
-      </h2>
+			<h2 class="text-3xl font-semibold mt-24 mb-4 text-center text-[#132780] dark:text-white">
+				Noen ord fra oss
+			</h2>
 
-      <div class="flex flex-col items-center gap-6 mb-4 mt-14">
-        <div class="flex flex-col items-center gap-4">
-          <div class="w-32">
-            <img
-              src="../images/thomas-profile.jpg"
-              alt="thomas"
-              class="w-32 h-32 rounded-full object-cover opacity-0 transition-opacity duration-500 ease-in-out"
-              onload="this.style.opacity = 1;"
-            />
-          </div>
-          <h3
-            class="text-2xl font-semibold text-[#132780] dark:text-slsecondary mb-2"
-          >
-          Nhan Thomas Nguyen
-          </h3>
-        </div>
-        <div
-          class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-4 transition opacity-0 transform translate-y-10"
-          id="fadeInDiv"
-        >
-          <div class="flex-1 mt-4 sm:mt-0">
-            <p class="text-black dark:text-white max-w-2xl">
-              Da jeg startet praksisperioden hadde jeg ikke noen særlig
-              forventninger til hva som kom med praksisperioden, men etter tiden
-              hos Swipload har jeg lært mer enn de siste to årene til sammen.
-              Selv om jeg allerede hadde noe erfaring fra personlige prosjekter
-              og skole, har det å jobbe i et team med profesjonelle utviklere
-              gitt meg en dypere forståelse av utvikling, spesielt innen
-              struktur, kodekvalitet og samarbeid.
-              <br />
-              <br />
-              I prosjektet brukte vi hovedsakelig Svelte som frontend-rammeverk,
-              som var nytt for meg. Takket være litt bakkunnskap og utrolig god
-              veiledning, har jeg lært meg å bruke Svelte på en ganske
-              kompentent nivå. Jeg har også fått innsikt i Azure DevOps, Docker
-              og arbeid med API-er. Opplevelsen hos Swipload har vært svært
-              positiv, og jeg er veldig takknemlig for muligheten de har gitt
-              meg.
-            </p>
-          </div>
-        </div>
-      </div>
+			<div class="flex flex-col items-center gap-6 mb-4 mt-14">
+				<div class="flex flex-col items-center gap-4">
+					<div class="w-32">
+						<img
+							src="../images/thomas-profile.jpg"
+							alt="thomas"
+							class="w-32 h-32 rounded-full object-cover opacity-0 transition-opacity duration-500 ease-in-out"
+							onload="this.style.opacity = 1;"
+						/>
+					</div>
+					<h3 class="text-2xl font-semibold text-[#132780] dark:text-slsecondary mb-2">
+						Nhan Thomas Nguyen
+					</h3>
+				</div>
+				<div
+					class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-4 transition opacity-0 transform translate-y-10"
+					id="fadeInDiv"
+				>
+					<div class="flex-1 mt-4 sm:mt-0">
+						<p class="text-black dark:text-white max-w-2xl">
+							Da jeg startet praksisperioden hadde jeg ikke noen særlig forventninger til hva som
+							kom med praksisperioden, men etter tiden hos Swipload har jeg lært mer enn de siste to
+							årene til sammen. Selv om jeg allerede hadde noe erfaring fra personlige prosjekter og
+							skole, har det å jobbe i et team med profesjonelle utviklere gitt meg en dypere
+							forståelse av utvikling, spesielt innen struktur, kodekvalitet og samarbeid.
+							<br />
+							<br />
+							I prosjektet brukte vi hovedsakelig Svelte som frontend-rammeverk, som var nytt for
+							meg. Takket være litt bakkunnskap og utrolig god veiledning, har jeg lært meg å bruke
+							Svelte på en ganske kompentent nivå. Jeg har også fått innsikt i Azure DevOps, Docker
+							og arbeid med API-er. Opplevelsen hos Swipload har vært svært positiv, og jeg er
+							veldig takknemlig for muligheten de har gitt meg.
+						</p>
+					</div>
+				</div>
+			</div>
 
-      <div class="flex flex-col items-center gap-6 mb-4 mt-14">
-        <div class="flex flex-col items-center gap-4">
-          <div class="w-32">
-            <img
-              src="../images/tony-profile.jpg"
-              alt="tony"
-              class="w-32 h-32 rounded-full opacity-0 transition-opacity duration-500 ease-in-out"
-              onload="this.style.opacity = 1;"
-            />
-          </div>
-          <h3
-            class="text-2xl font-semibold text-[#132780] dark:text-slsecondary mb-2"
-          >
-            Tony Nguyen Le
-          </h3>
-        </div>
-        <div
-          class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-4 transition opacity-0 transform translate-y-10"
-          id="fadeInDiv"
-        >
-          <div class="flex-1 mt-4 sm:mt-0">
-            <p class="text-black dark:text-white max-w-2xl">
-              Da jeg startet praksisperioden hos Swipload, var jeg nysgjerrig og
-              engasjert i å lære hvordan et profesjonelt utviklingsteam
-              arbeider. Hver dag var jeg motivert for å bidra, stille spørsmål
-              og forstå nye teknologier. Jeg har fått mye praktisk erfaring og
-              utviklet ferdigheter som jeg ikke har hatt muligheten til å jobbe
-              med tidligere.
-              <br />
-              <br />
-              Gjennom praksisen har jeg lært mye om frontend-utvikling, spesielt
-              med Svelte, TypeScript og Tailwind CSS. Jeg har jobbet med å bygge
-              brukergrensesnitt i henhold til Figma-designet og koblet sammen
-              funksjonaliteter som gjør appen mer intuitiv for brukerne. Jeg har
-              også fått innsikt i hvordan man jobber i et team med profesjonelle
-              utviklere, og hvordan god kommunikasjon og samarbeid er essensielt
-              for å skape et vellykket produkt.
-              <br />
-              <br />
-              Denne erfaringen har vært utrolig læringsrik, og jeg føler meg nå
-              bedre forberedt på å møte fremtidige utviklingsutfordringer med
-              nye tekniske ferdigheter og større selvtillit.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="flex flex-col items-center gap-6 mb-4 mt-14">
-        <div class="flex flex-col items-center gap-4">
-          <div class="w-32">
-            <img
-              src="../images/nicoleta-profile.jpg"
-              alt="nicoleta"
-              class="w-32 h-32 rounded-full object-cover opacity-0 transition-opacity duration-500 ease-in-out"
-              onload="this.style.opacity = 1;"
-            />
-          </div>
-          <h3
-            class="text-2xl font-semibold text-[#132780] dark:text-slsecondary mb-2"
-          >
-          Nicoleta Pavelescu
-          </h3>
-        </div>
-        <div
-          class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-4 transition opacity-0 transform translate-y-10"
-          id="fadeInDiv"
-        >
-          <div class="flex-1 mt-4 sm:mt-0">
-            <p class="text-black dark:text-white max-w-2xl">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-              <br />
-              <br />
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="flex flex-col items-center gap-6 mb-4 mt-14">
-        <div class="flex flex-col items-center gap-4">
-          <div class="w-32">
-            <img
-              src="../images/ajdin-profile.jpg"
-              alt="ajdin"
-              class="w-32 h-32 rounded-full object-cover opacity-0 transition-opacity duration-500 ease-in-out"
-              onload="this.style.opacity = 1;"
-            />
-          </div>
-          <h3
-            class="text-2xl font-semibold text-[#132780] dark:text-slsecondary mb-2"
-          >
-          Ajdin Smajic
-          </h3>
-        </div>
-        <div
-          class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-4 transition opacity-0 transform translate-y-10"
-          id="fadeInDiv"
-        >
-          <div class="flex-1 mt-4 sm:mt-0">
-            <p class="text-black dark:text-white max-w-2xl">
-              Da jeg startet praksisperioden hos Swipload, var jeg usikker
-              på hva jeg kunne forvente. Nå, etter nesten tre måneder,
-               har jeg oppnådd verdifull erfaring og innsikt i applikasjonsutvikling
-                gjennom koding og samarbeid. Denne perioden har ikke bare styrket mine
-                tekniske ferdigheter innen IT, men også gitt meg en bedre 
-                forståelse av hva det innebærer å jobbe som IT-utvikler i et profesjonelt miljø.
-              <br />
-              <br />
-              I prosjektet brukte vi Svelte og TypeScript til frontend, noe jeg ikke hadde 
-              kjennskap til fra tidligere. Med støtte og veiledning fra de erfarne ansatte
-               har jeg fått en solid forståelse av disse teknologiene. I tillegg har jeg 
-               fått praktisk erfaring med Docker, Azure, DevOps og Git Desktop, noe som
-                har vært svært verdifullt for min faglige utvikling. Praksisperioden har 
-                vært utrolig lærerik, og jeg er svært takknemlig for muligheten til å
-                utvikle meg hos Swipload.
-            </p>
-          </div>
-        </div>
-      </div>
-    </main>
+			<div class="flex flex-col items-center gap-6 mb-4 mt-14">
+				<div class="flex flex-col items-center gap-4">
+					<div class="w-32">
+						<img
+							src="../images/tony-profile.jpg"
+							alt="tony"
+							class="w-32 h-32 rounded-full opacity-0 transition-opacity duration-500 ease-in-out"
+							onload="this.style.opacity = 1;"
+						/>
+					</div>
+					<h3 class="text-2xl font-semibold text-[#132780] dark:text-slsecondary mb-2">
+						Tony Nguyen Le
+					</h3>
+				</div>
+				<div
+					class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-4 transition opacity-0 transform translate-y-10"
+					id="fadeInDiv"
+				>
+					<div class="flex-1 mt-4 sm:mt-0">
+						<p class="text-black dark:text-white max-w-2xl">
+							Da jeg startet praksisperioden hos Swipload, var jeg nysgjerrig og engasjert i å lære
+							hvordan et profesjonelt utviklingsteam arbeider. Hver dag var jeg motivert for å
+							bidra, stille spørsmål og forstå nye teknologier. Jeg har fått mye praktisk erfaring
+							og utviklet ferdigheter som jeg ikke har hatt muligheten til å jobbe med tidligere.
+							<br />
+							<br />
+							Gjennom praksisen har jeg lært mye om frontend-utvikling, spesielt med Svelte,
+							TypeScript og Tailwind CSS. Jeg har jobbet med å bygge brukergrensesnitt i henhold til
+							Figma-designet og koblet sammen funksjonaliteter som gjør appen mer intuitiv for
+							brukerne. Jeg har også fått innsikt i hvordan man jobber i et team med profesjonelle
+							utviklere, og hvordan god kommunikasjon og samarbeid er essensielt for å skape et
+							vellykket produkt.
+							<br />
+							<br />
+							Denne erfaringen har vært utrolig læringsrik, og jeg føler meg nå bedre forberedt på å
+							møte fremtidige utviklingsutfordringer med nye tekniske ferdigheter og større
+							selvtillit.
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="flex flex-col items-center gap-6 mb-4 mt-14">
+				<div class="flex flex-col items-center gap-4">
+					<div class="w-32">
+						<img
+							src="../images/nicoleta-profile.jpg"
+							alt="nicoleta"
+							class="w-32 h-32 rounded-full object-cover opacity-0 transition-opacity duration-500 ease-in-out"
+							onload="this.style.opacity = 1;"
+						/>
+					</div>
+					<h3 class="text-2xl font-semibold text-[#132780] dark:text-slsecondary mb-2">
+						Nicoleta Pavelescu
+					</h3>
+				</div>
+				<div
+					class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-4 transition opacity-0 transform translate-y-10"
+					id="fadeInDiv"
+				>
+					<div class="flex-1 mt-4 sm:mt-0">
+						<p class="text-black dark:text-white max-w-2xl">
+							Praksisperioden har uten tvil vært semesterets høydepunkt, en erfaring jeg virkelig
+							har satt pris på fordi den har gitt meg et innblikk i hvordan arbeidslivet faktisk
+							fungerer. Jeg gikk inn i praksisperioden med stor motivasjon og entusiasme, og gledet
+							meg til alt jeg kunne lære. Etter tre måneder kan jeg si at det har vært både lærerik
+							på måter jeg ikke hadde forventet.
+							<br />
+							<br />
+							Gjennom praksisen har jeg lært mye nytt og fått jobbe med teknologier jeg ikke hadde
+							mye erfaring med fra før. Jeg utviklet meg spesielt innen frontend-utvikling ved bruk
+							av Svelte, Tailwind CSS og Tailwind, og jeg fikk en dypere forståelse av Git og Azure.
+							Det var også lærerikt å se hvordan de ulike delene av et prosjekt henger sammen, og
+							forstå hvorfor ting gjøres på bestemte måter.
+							<br />
+							<br />
+							Det som gjorde praksisen spesielt verdifull var ikke bare de tekniske ferdighetene jeg
+							tilegnet meg, men også innsikten i arbeidsflyt og samarbeid i team. Dette har gitt meg
+							en dypere forståelse av hva som kreves for å lykkes som utvikler, og har styrket min
+							motivasjon for å fortsette å lære og vokse i faget.
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="flex flex-col items-center gap-6 mb-4 mt-14">
+				<div class="flex flex-col items-center gap-4">
+					<div class="w-32">
+						<img
+							src="../images/ajdin-profile.jpg"
+							alt="ajdin"
+							class="w-32 h-32 rounded-full object-cover opacity-0 transition-opacity duration-500 ease-in-out"
+							onload="this.style.opacity = 1;"
+						/>
+					</div>
+					<h3 class="text-2xl font-semibold text-[#132780] dark:text-slsecondary mb-2">
+						Ajdin Smajic
+					</h3>
+				</div>
+				<div
+					class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-4 transition opacity-0 transform translate-y-10"
+					id="fadeInDiv"
+				>
+					<div class="flex-1 mt-4 sm:mt-0">
+						<p class="text-black dark:text-white max-w-2xl">
+							Da jeg startet praksisperioden hos Swipload, var jeg usikker på hva jeg kunne
+							forvente. Nå, etter nesten tre måneder, har jeg oppnådd verdifull erfaring og innsikt
+							i applikasjonsutvikling gjennom koding og samarbeid. Denne perioden har ikke bare
+							styrket mine tekniske ferdigheter innen IT, men også gitt meg en bedre forståelse av
+							hva det innebærer å jobbe som IT-utvikler i et profesjonelt miljø.
+							<br />
+							<br />
+							I prosjektet brukte vi Svelte og TypeScript til frontend, noe jeg ikke hadde kjennskap
+							til fra tidligere. Med støtte og veiledning fra de erfarne ansatte har jeg fått en
+							solid forståelse av disse teknologiene. I tillegg har jeg fått praktisk erfaring med
+							Docker, Azure, DevOps og Git Desktop, noe som har vært svært verdifullt for min
+							faglige utvikling. Praksisperioden har vært utrolig lærerik, og jeg er svært
+							takknemlig for muligheten til å utvikle meg hos Swipload.
+						</p>
+					</div>
+				</div>
+			</div>
+		</main>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
-    <script>
-      // Dark mode toggle script
-      var themeToggleDarkIcon = document.getElementById(
-        "theme-toggle-dark-icon"
-      );
-      var themeToggleLightIcon = document.getElementById(
-        "theme-toggle-light-icon"
-      );
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+		<script>
+			// Dark mode toggle script
+			var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+			var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
 
-      // Function to update icons based on the current theme
-      function updateIcons() {
-        if (document.documentElement.classList.contains("dark")) {
-          themeToggleDarkIcon.classList.add("hidden");
-          themeToggleLightIcon.classList.remove("hidden");
-        } else {
-          themeToggleDarkIcon.classList.remove("hidden");
-          themeToggleLightIcon.classList.add("hidden");
-        }
-      }
+			// Function to update icons based on the current theme
+			function updateIcons() {
+				if (document.documentElement.classList.contains('dark')) {
+					themeToggleDarkIcon.classList.add('hidden');
+					themeToggleLightIcon.classList.remove('hidden');
+				} else {
+					themeToggleDarkIcon.classList.remove('hidden');
+					themeToggleLightIcon.classList.add('hidden');
+				}
+			}
 
-      // Initial check for theme preference
-      if (
-        localStorage.getItem("color-theme") === "dark" ||
-        (!("color-theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ) {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
+			// Initial check for theme preference
+			if (
+				localStorage.getItem('color-theme') === 'dark' ||
+				(!('color-theme' in localStorage) &&
+					window.matchMedia('(prefers-color-scheme: dark)').matches)
+			) {
+				document.documentElement.classList.add('dark');
+			} else {
+				document.documentElement.classList.remove('dark');
+			}
 
-      // Update icons based on the initial theme
-      updateIcons();
+			// Update icons based on the initial theme
+			updateIcons();
 
-      var themeToggleBtn = document.getElementById("theme-toggle");
+			var themeToggleBtn = document.getElementById('theme-toggle');
 
-      themeToggleBtn.addEventListener("click", function () {
-        // Toggle the dark class on the html element
-        document.documentElement.classList.toggle("dark");
+			themeToggleBtn.addEventListener('click', function () {
+				// Toggle the dark class on the html element
+				document.documentElement.classList.toggle('dark');
 
-        // Update the localStorage value
-        if (document.documentElement.classList.contains("dark")) {
-          localStorage.setItem("color-theme", "dark");
-        } else {
-          localStorage.setItem("color-theme", "light");
-        }
+				// Update the localStorage value
+				if (document.documentElement.classList.contains('dark')) {
+					localStorage.setItem('color-theme', 'dark');
+				} else {
+					localStorage.setItem('color-theme', 'light');
+				}
 
-        // Update icons based on the new theme
-        updateIcons();
-      });
-      document.addEventListener("DOMContentLoaded", () => {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("fade-in");
-            }
-          });
-        });
+				// Update icons based on the new theme
+				updateIcons();
+			});
+			document.addEventListener('DOMContentLoaded', () => {
+				const observer = new IntersectionObserver((entries) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add('fade-in');
+						}
+					});
+				});
 
-        document.querySelectorAll(".transition").forEach((element) => {
-          observer.observe(element);
-        });
-      });
-      document.addEventListener("DOMContentLoaded", function () {
-        const images = document.querySelectorAll("img");
-        images.forEach((image) => {
-          image.onload = () => {
-            image.classList.add("blur-loaded");
-            image.classList.remove("opacity-0");
-          };
-        });
-      });
-    </script>
-  </body>
+				document.querySelectorAll('.transition').forEach((element) => {
+					observer.observe(element);
+				});
+			});
+			document.addEventListener('DOMContentLoaded', function () {
+				const images = document.querySelectorAll('img');
+				images.forEach((image) => {
+					image.onload = () => {
+						image.classList.add('blur-loaded');
+						image.classList.remove('opacity-0');
+					};
+				});
+			});
+		</script>
+	</body>
 
-  <footer class="text-black dark:text-white text-center mb-4">
-    <!-- Footer content -->
-    <p>© 2024 Designed by Thomas, Tony, Nicoleta, and Ajdin</p>
-  </footer>
+	<footer class="text-black dark:text-white text-center mb-4">
+		<!-- Footer content -->
+		<p>© 2024 Designed by Thomas, Tony, Nicoleta, and Ajdin</p>
+	</footer>
 </html>
